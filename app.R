@@ -9,13 +9,17 @@
 
 library(shiny)
 library(DT)
+library(bupaR)
+library(shinycssloaders)
+library(processanimateR)
+library(processmapR)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
    titlePanel("UI"),
    sidebarPanel(
      fluidRow(
-     sliderInput("data", "% of Data", min=0, max = 100, post="%", value=90)),
+     sliderInput("sliderData", "% of Data", min=0, max = 100, post="%", value=90)),
      fluidRow(
        column(4,
               selectInput("x", "X", choices = c("A", "B", "C"), label = NULL)),
@@ -32,18 +36,30 @@ ui <- fluidPage(
               DT::dataTableOutput("table"))
      )
    ),
-   mainPanel("Output")
+   mainPanel("Output",
+             fluidPage(width = 20,shinycssloaders::withSpinner(processanimaterOutput("process"))))
 )
 
 
 # Example data
 RV <- reactiveValues(data = data.frame(id=NULL, x=NULL, y=NULL, xy=NULL, Delete=NULL, stringsAsFactors = FALSE), rowname=NULL)
-
+data12 <- reactiveValues(data = read_xes("/Users/Rai_Mad/Dropbox/DSE/3.Semester/Produktion/running-example.xes"))
 
 server <- function(input, output) {
   # counter value used as id for the releationships
   counter <- reactiveValues(countervalue = 0) 
-   
+  
+  data <- read_xes("/Users/Rai_Mad/Dropbox/DSE/3.Semester/Produktion/running-example.xes")
+  #data <- data[which(data$CASE_concept_name!="erewrwr"),]
+  
+  output$process <- renderProcessanimater(expr = { animate_process(data,
+                                                                   mode="off",
+                                                                   timeline = TRUE,
+                                                                   legend = "color",
+                                                                   initial_state = "paused") })
+  
+  #output$process <- renderPlot(data) 
+  
   # action which is fired when pressing the Ok Button for inserting constraints
    observeEvent(input$act, {
      # create a new entry
@@ -52,8 +68,7 @@ server <- function(input, output) {
                         y=input$y, 
                         xy=input$xy, 
                         Delete=paste("<button id='button_",counter$countervalue, "' type='button' class='btn btn-default action-button' onclick='Shiny.onInputChange(&quot;select_button&quot;,  this.id)'>Delete</button>", sep=""),
-                        stringsAsFactors = FALSE,
-                        row.names = NULL)
+                        stringsAsFactors = FALSE)
      # increase the id
      counter$countervalue = counter$countervalue + 1
      # add the entry to the table
@@ -64,12 +79,11 @@ server <- function(input, output) {
    
     # print the table
     output$table <- DT::renderDataTable(
-      RV$data, escape = FALSE, options = list(
+      RV$data, escape = FALSE, rownames= FALSE, options = list(
         pageLength = 10,
         dom = 't',
-        ordering = F,
         autoWidth = TRUE,
-        columnDefs = list(list(width = '15px', targets = c(1,2,3,4))))
+        columnDefs = list(list(className = 'dt-center', targets = "_all")))
       )
    
     # if the select button of one entry of the table has been pressed, delete the entry
@@ -79,6 +93,11 @@ server <- function(input, output) {
      print(paste("Selected Id: " , selectedId))
      # Remove the value of the table
      RV$data <<- RV$data[-which(RV$data$id==selectedId),]
+   })
+   
+   observeEvent(input$sliderData, {
+     print(input$sliderData)
+    data12$data <<- data12$data %>% filter(CASE_concept_name=="2")
    })
    
    print(isolate(RV$data))
