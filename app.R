@@ -75,7 +75,6 @@ RV <-
     ),
     rowname = NULL
   )
-#data12 <- reactiveValues(data = read_xes("/Users/Rai_Mad/Dropbox/DSE/3.Semester/Produktion/running-example.xes"))
 
 server <- function(input, output) {
   # counter value used as id for the releationships
@@ -88,7 +87,6 @@ server <- function(input, output) {
   
   output$process <- renderProcessanimater(expr = {
     if (is.null(input$xes_input)) {
-      print("is null")
       data <- NULL
     }
     else {
