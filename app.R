@@ -6,6 +6,8 @@ library(processanimateR)
 library(processmapR)
 library(xesreadR)
 
+options(shiny.maxRequestSize=1*1024^3) # upload limit = 1GB
+
 # Define UI for application that draws a histogram
 ui <- fluidPage(
   titlePanel("UI"),
@@ -92,15 +94,15 @@ server <- function(input, output) {
     else {
       print(paste0("Reading ", input$xes_input$datapath))
       data <- read_xes(input$xes_input$datapath)
+      
+      animate_process(
+        data,
+        mode = "off",
+        timeline = TRUE,
+        legend = "color",
+        initial_state = "paused"
+      )
     }
-    
-    animate_process(
-      data,
-      mode = "off",
-      timeline = TRUE,
-      legend = "color",
-      initial_state = "paused"
-    )
   })
   
   #output$process <- renderPlot(data)
