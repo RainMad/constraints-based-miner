@@ -27,22 +27,18 @@ ui <- fluidPage(
       )
     ),
     fluidRow(
-      column(4,
-             selectInput(
-               "x", "X", choices = c("A", "B", "C"), label = NULL
-             )),
-      column(4,
-             selectInput(
+      selectInput("x", "X", choices = c("A", "B", "C"), label = NULL)
+      ),
+    fluidRow(
+      selectInput(
                "xy",
                "X",
                choices = c("s", "<-", "->"),
-               label = NULL
-             )),
-      column(4,
-             selectInput(
-               "y", "Y", choices = c("A", "B", "C"), label = NULL
-             ))
-    ),
+               label = NULL)
+      ),
+    fluidRow(
+      selectInput("y", "Y", choices = c("A", "B", "C"), label = NULL)
+      ),
     fluidRow(column(
       4,
       actionButton(
@@ -76,14 +72,9 @@ RV <-
     rowname = NULL
   )
 
-server <- function(input, output) {
+server <- function(input, output, session) {
   # counter value used as id for the releationships
   counter <- reactiveValues(countervalue = 0)
-  
-
-  #data12 <- reactiveValues(data = data)
-  
-  #data <- data[which(data$CASE_concept_name!="erewrwr"),]
   
   output$process <- renderProcessanimater(expr = {
     if (is.null(input$xes_input)) {
@@ -93,6 +84,13 @@ server <- function(input, output) {
       print(paste0("Reading ", input$xes_input$datapath))
       data <- read_xes(input$xes_input$datapath)
       
+      # set content of activity dropdown boxes
+      possible_activities <- data %>% select(Activity) %>% unique()
+      
+      updateSelectInput(session = session, inputId = "x", choices=possible_activities$Activity)
+      updateSelectInput(session = session, inputId = "y", choices=possible_activities$Activity)
+      
+      # create graph
       animate_process(
         data,
         mode = "off",
