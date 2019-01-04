@@ -27,32 +27,26 @@ ui <- fluidPage(
       )
     ),
     fluidRow(
-      selectInput("x", "X", choices = c("A", "B", "C"), label = NULL)
+      selectInput("x", "None", label = "Activity A")
       ),
     fluidRow(
-      selectInput(
-               "xy",
-               "X",
-               choices = c("s", "<-", "->"),
-               label = NULL)
+      selectInput("y", "None", label = "Activity B")
       ),
     fluidRow(
-      selectInput("y", "Y", choices = c("A", "B", "C"), label = NULL)
+      selectInput("z", "None", label = "Constraint")
       ),
-    fluidRow(column(
-      4,
+    fluidRow(
       actionButton(
         inputId = "act",
-        label = "Ok",
-        icon("triangle-right", lib = "glyphicon")
+        label = "Add Constraint",
+        icon("plus", lib = "glyphicon")
       )
-    )),
-    fluidRow(column(12,
-                    DT::dataTableOutput("table")))
+    ),
+    fluidRow(DT::dataTableOutput("table"))
   ),
   mainPanel("Output",
             fluidPage(
-              width = 20,
+              width = 12,
               shinycssloaders::withSpinner(processanimaterOutput("process"))
             ))
 )
@@ -100,17 +94,17 @@ server <- function(input, output, session) {
       )
     }
   })
-  
+
   #output$process <- renderPlot(data)
-  
+
   # action which is fired when pressing the Ok Button for inserting constraints
   observeEvent(input$act, {
     # create a new entry
     newrow = data.frame(
       id = counter$countervalue,
-      x = input$x,
-      y = input$y,
-      xy = input$xy,
+      activity1 = input$x,
+      activity2 = input$y,
+      constraint = input$z,
       Delete = paste(
         "<button id='button_",
         counter$countervalue,
