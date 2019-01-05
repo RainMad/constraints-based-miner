@@ -66,12 +66,34 @@ chain_precedence <- function(eventlog, activity1, activity2) {
 }
 
 
+first_constraint <- function(eventlog, activity1) {
+  eventlog %>%
+    group_by(CASE_concept_name) %>%
+    summarize(resp = first(activity_id) == activity1) %>%
+    pull(resp)
+}
+
+last_constraint <- function(eventlog, activity1) {
+  eventlog %>%
+    group_by(CASE_concept_name) %>%
+    summarize(resp = last(activity_id) == activity1) %>%
+    pull(resp)
+}
+
+
 constraints = c("Responded Existence",
                 "Response",
                 "Precedence",
                 "Chain Response",
-                "Chain Precedence")
+                "Chain Precedence",
+                "First",
+                "Last")
 
+dual_constraints = c("Responded Existence",
+                     "Response",
+                     "Precedence",
+                     "Chain Response",
+                     "Chain Precedence")
 
 ### Application
 
@@ -95,9 +117,7 @@ ui <- fluidPage(
     fluidRow(
       selectInput("x", "None", label = "Activity A")
       ),
-    fluidRow(
-      selectInput("y", "None", label = "Activity B")
-      ),
+    uiOutput("activity2_input"),
     fluidRow(
       selectInput("z", choices = constraints, label = "Constraint")
       ),
@@ -137,6 +157,16 @@ RV <-
 server <- function(input, output, session) {
   # counter value used as id for the releationships
   counter <- reactiveValues(countervalue = 0)
+  
+  output$activity2_input <- renderUI({
+    print(input$z)
+    if (input$z %in% dual_constraints) {
+      print("hi")
+      fluidRow(
+        selectInput("y", "None", label = "Activity B")
+      )
+    }
+  })
   
   observeEvent(input$xes_input, {
     RV$eventlog <- read_xes(input$xes_input$datapath)
@@ -189,8 +219,15 @@ server <- function(input, output, session) {
                         "Response" = response,
                         "Precedence" = precedence,
                         "Chain Response" = chain_response,
-                        "Chain Precedence" = chain_precedence)
-    constraint_matches = constraint(RV$eventlog, input$x, input$y)
+                        "Chain Precedence" = chain_precedence,
+                        "First" = first_constraint,
+                        "Last" = last_constraint)
+    
+    if (input$z %in% dual_constraints) {
+      constraint_matches = constraint(RV$eventlog, input$x, input$y)
+    } else {
+      constraint_matches = constraint(RV$eventlog, input$x)
+    }
 
     RV$filters[[toString(counter$countervalue)]] = constraint_matches
 
