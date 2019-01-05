@@ -8,7 +8,21 @@ library(xesreadR)
 
 options(shiny.maxRequestSize=1*1024^3) # upload limit = 1GB
 
-# Define UI for application that draws a histogram
+### constraints
+
+responded_existence <- function(eventlog, activity1, activity2) {
+  eventlog %>%
+    group_by(CASE_concept_name) %>%
+    summarize(xcount = sum(activity_id == activity1),
+              ycount = sum(activity_id == activity2)) %>%
+    mutate(resp = xcount == 0 | ycount > 0)
+}
+
+constraints = c("Responded Existence")
+
+
+### Application
+
 ui <- fluidPage(
   titlePanel("UI"),
   sidebarPanel(
@@ -33,7 +47,7 @@ ui <- fluidPage(
       selectInput("y", "None", label = "Activity B")
       ),
     fluidRow(
-      selectInput("z", "None", label = "Constraint")
+      selectInput("z", choices = constraints, label = "Constraint")
       ),
     fluidRow(
       actionButton(
@@ -105,6 +119,7 @@ server <- function(input, output, session) {
       activity1 = input$x,
       activity2 = input$y,
       constraint = input$z,
+      filtered = 100,
       Delete = paste(
         "<button id='button_",
         counter$countervalue,
@@ -113,6 +128,9 @@ server <- function(input, output, session) {
       ),
       stringsAsFactors = FALSE
     )
+    
+    
+    
     # increase the id
     counter$countervalue = counter$countervalue + 1
     # add the entry to the table
@@ -141,7 +159,7 @@ server <- function(input, output, session) {
     # get the id of the button which is the same like in the data frame
     selectedId <-
       as.numeric(strsplit(input$select_button, "_")[[1]][2])
-    print(paste("Selected Id: " , selectedId))
+    print(paste("deleted Id:", selectedId))
     # Remove the value of the table
     RV$data <<- RV$data[-which(RV$data$id == selectedId), ]
   })
