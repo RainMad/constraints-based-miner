@@ -20,8 +20,6 @@ responded_existence <- function(eventlog, activity1, activity2) {
 }
 
 response <- function(eventlog, activity1, activity2) {
-  
-  pattern <-  paste(activity1, activity2, sep="|")
   eventlog %>%
     group_by(CASE_concept_name) %>% 
     mutate(exists = ifelse(activity1 %in% activity_id &  
@@ -95,7 +93,7 @@ ui <- fluidPage(
     ),
     fluidRow(
       sliderInput(
-        "sliderData",
+        "data_used",
         "% of Data",
         min = 0,
         max = 100,
@@ -124,7 +122,7 @@ ui <- fluidPage(
   mainPanel("Output",
             fluidPage(
               width = 12,
-              shinycssloaders::withSpinner(processanimaterOutput("process"))
+              shinycssloaders::withSpinner(processanimaterOutput("process", height="800px"))
             ))
 )
 
@@ -150,16 +148,15 @@ server <- function(input, output, session) {
   counter <- reactiveValues(countervalue = 0)
   
   observeEvent(input$xes_input, {
-    print(paste0("Reading ", input$xes_input$datapath))
     RV$eventlog <- read_xes(input$xes_input$datapath)
     RV$filters <- data.frame(row.names = unique(RV$eventlog$CASE_concept_name))
     RV$constraints <- NULL
     
     # set content of activity dropdown boxes
-    possible_activities <- RV$eventlog %>% select(Activity) %>% unique()
+    possible_activities <- unique(RV$eventlog$activity_id)
     
-    updateSelectInput(session = session, inputId = "x", choices=possible_activities$Activity)
-    updateSelectInput(session = session, inputId = "y", choices=possible_activities$Activity)
+    updateSelectInput(session = session, inputId = "x", choices=possible_activities)
+    updateSelectInput(session = session, inputId = "y", choices=possible_activities)
   })
   
   output$process <- renderProcessanimater(expr = {
@@ -168,9 +165,6 @@ server <- function(input, output, session) {
     }
     
     # create graph
-    
-    print("filters")
-    print(RV$filters)
     
     if (length(RV$filters) == 0) {
       event_filter <- data.frame(case_id = c()) 
@@ -203,10 +197,7 @@ server <- function(input, output, session) {
                         "Chain Response" = chain_response,
                         "Chain Precedence" = chain_precedence)
     constraint_matches = constraint(RV$eventlog, input$x, input$y)
-  
-    print(counter$countervalue)
-    print(constraint_matches)
-    print("k")
+
     RV$filters[[toString(counter$countervalue)]] = constraint_matches
 
     # create a new entry
@@ -224,8 +215,6 @@ server <- function(input, output, session) {
       ),
       stringsAsFactors = FALSE
     )
-    
-    
     
     # increase the id
     counter$countervalue = counter$countervalue + 1
@@ -262,7 +251,6 @@ server <- function(input, output, session) {
   
   observeEvent(input$sliderData, {
     print(input$sliderData)
-    #data12$data <- data12$data %>% filter(CASE_concept_name == "2")
   })
   
   
