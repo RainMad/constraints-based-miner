@@ -15,7 +15,8 @@ responded_existence <- function(eventlog, activity1, activity2) {
     group_by(CASE_concept_name) %>%
     summarize(xcount = sum(activity_id == activity1),
               ycount = sum(activity_id == activity2)) %>%
-    mutate(resp = xcount == 0 | ycount > 0)
+    mutate(responded_existence = xcount == 0 | ycount > 0) %>%
+    pull(responded_existence)
 }
 
 response <- function(eventlog, activity1, activity2) {
@@ -125,7 +126,7 @@ ui <- fluidPage(
 # Example data
 RV <-
   reactiveValues(
-    data = data.frame(
+    constraints = data.frame(
       id = NULL,
       x = NULL,
       y = NULL,
@@ -133,49 +134,82 @@ RV <-
       Delete = NULL,
       stringsAsFactors = FALSE
     ),
-    rowname = NULL
+    rowname = NULL,
+    eventlog = NULL,
+    filters = NULL
   )
 
 server <- function(input, output, session) {
   # counter value used as id for the releationships
   counter <- reactiveValues(countervalue = 0)
   
-  output$process <- renderProcessanimater(expr = {
-    if (is.null(input$xes_input)) {
-      data <- NULL
-    }
-    else {
-      print(paste0("Reading ", input$xes_input$datapath))
-      data <- read_xes(input$xes_input$datapath)
-      
-      # set content of activity dropdown boxes
-      possible_activities <- data %>% select(Activity) %>% unique()
-      
-      updateSelectInput(session = session, inputId = "x", choices=possible_activities$Activity)
-      updateSelectInput(session = session, inputId = "y", choices=possible_activities$Activity)
-      
-      # create graph
-      animate_process(
-        data,
-        mode = "off",
-        timeline = TRUE,
-        legend = "color",
-        initial_state = "paused"
-      )
-    }
+  observeEvent(input$xes_input, {
+    print(paste0("Reading ", input$xes_input$datapath))
+    RV$eventlog <- read_xes(input$xes_input$datapath)
+    RV$filters <- data.frame(row.names = unique(RV$eventlog$CASE_concept_name))
+    RV$constraints <- NULL
+    
+    # set content of activity dropdown boxes
+    possible_activities <- RV$eventlog %>% select(Activity) %>% unique()
+    
+    updateSelectInput(session = session, inputId = "x", choices=possible_activities$Activity)
+    updateSelectInput(session = session, inputId = "y", choices=possible_activities$Activity)
   })
-
-  #output$process <- renderPlot(data)
+  
+  output$process <- renderProcessanimater(expr = {
+    if (is.null(RV$eventlog)) {
+      return()
+    }
+    
+    # create graph
+    
+    print("filters")
+    print(RV$filters)
+    
+    if (length(RV$filters) == 0) {
+      event_filter <- data.frame(case_id = c()) 
+    } else {
+      event_filter <- RV$filters %>% 
+        mutate(alltrue = rowSums(.) == length(.)) %>%
+        rownames_to_column("case_id") %>%
+        filter(!alltrue)
+    }
+    
+    print("event filter")
+    print(event_filter)
+    
+    animate_process(
+      RV$eventlog %>% filter(!CASE_concept_name %in% event_filter$case_id),
+      mode = "off",
+      timeline = TRUE,
+      legend = "color",
+      initial_state = "paused"
+    )
+  })
 
   # action which is fired when pressing the Ok Button for inserting constraints
   observeEvent(input$act, {
+    # constraints
+    constraint = switch(input$z, 
+                        "Responded Existence" = responded_existence,
+                        "Response" = response,
+                        "Precedence" = precedence,
+                        "Chain Response" = chain_response,
+                        "Chain Precedence" = chain_precedence)
+    constraint_matches = constraint(RV$eventlog, input$x, input$y)
+  
+    print(counter$countervalue)
+    print(constraint_matches)
+    print("k")
+    RV$filters[[toString(counter$countervalue)]] = constraint_matches
+
     # create a new entry
     newrow = data.frame(
       id = counter$countervalue,
       activity1 = input$x,
       activity2 = input$y,
       constraint = input$z,
-      filtered = 100,
+      filtered = paste0(round((1 - sum(constraint_matches) / length(constraint_matches)) * 100, 1), "%"),
       Delete = paste(
         "<button id='button_",
         counter$countervalue,
@@ -190,14 +224,14 @@ server <- function(input, output, session) {
     # increase the id
     counter$countervalue = counter$countervalue + 1
     # add the entry to the table
-    RV$data <<- rbind(RV$data, newrow)
+    RV$constraints <<- rbind(RV$constraints, newrow)
     
-    print(isolate(RV$data$id))
+    print(isolate(RV$constraints$id))
   })
   
   # print the table
   output$table <- DT::renderDataTable(
-    RV$data,
+    RV$constraints,
     escape = FALSE,
     rownames = FALSE,
     options = list(
@@ -217,7 +251,7 @@ server <- function(input, output, session) {
       as.numeric(strsplit(input$select_button, "_")[[1]][2])
     print(paste("deleted Id:", selectedId))
     # Remove the value of the table
-    RV$data <<- RV$data[-which(RV$data$id == selectedId), ]
+    RV$constraints <<- RV$constraints[-which(RV$constraints$id == selectedId), ]
   })
   
   observeEvent(input$sliderData, {
@@ -226,7 +260,7 @@ server <- function(input, output, session) {
   })
   
   
-  print(isolate(RV$data))
+  print(isolate(RV$constraints))
 }
 
 # Run the application
