@@ -48,7 +48,8 @@ chain_response <- function(eventlog, activity1, activity2) {
   eventlog %>%
     group_by(CASE_concept_name) %>%
     mutate(next.activity = lead(activity_id),
-           response = activity_id == activity1 & next.activity != activity2) %>%
+           response = activity_id == activity1 & 
+                      (is.na(next.activity) | next.activity != activity2)) %>%
     summarize(resp = sum(response) == 0) %>%
     pull(resp)
 }
@@ -58,7 +59,8 @@ chain_precedence <- function(eventlog, activity1, activity2) {
   eventlog %>%
     group_by(CASE_concept_name) %>%
     mutate(previous.activity = lag(activity_id),
-           response = activity_id == activity2 & previous.activity != activity1) %>%
+           response = activity_id == activity2 & 
+                      (is.na(previous.activity) | previous.activity != activity1)) %>%
     summarize(resp = sum(response) == 0) %>%
     pull(resp)
 }
