@@ -35,13 +35,11 @@ precedence <- function(eventlog, activity1, activity2) {
   
   eventlog %>%
     group_by(CASE_concept_name) %>% 
-    mutate(exists = ifelse(activity1 %in% activity_id &  
-                             activity2 %in% activity_id, TRUE, FALSE)) %>%
-    summarize(firstAct = first(activity_id),
-              xExists = activity1 %in% activity_id,
-              yExists = activity2 %in% activity_id,
-              exists = first(exists)) %>%
-    mutate(resp = xExists == TRUE & yExists == TRUE & exists == TRUE, firstAct == activity1) %>%
+    mutate(yoccurs = activity2 %in% activity_id) %>%
+    filter(activity_id == activity1 | activity_id == activity2 | !yoccurs) %>%
+    summarize(first_activity = first(activity_id),
+              yoccurs = first(yoccurs)) %>%
+    mutate(resp = first_activity == activity1 | !yoccurs) %>%
     pull(resp)
 }
 
