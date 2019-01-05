@@ -26,8 +26,8 @@ response <- function(eventlog, activity1, activity2) {
     summarize(lastAct = last(activity_id),
               xExists = activity1 %in% activity_id,
               yExists = activity2 %in% activity_id) %>%
-    mutate(respondend_existence = xExists == TRUE & yExists == TRUE & lastAct== activity2) %>%
-    pull(respondend_existence)
+    mutate(resp = xExists == TRUE & yExists == TRUE & lastAct== activity2) %>%
+    pull(resp)
 }
 
 
@@ -39,8 +39,8 @@ precedence <- function(eventlog, activity1, activity2) {
     summarize(firstAct = first(activity_id),
               xExists = activity1 %in% activity_id,
               yExists = activity2 %in% activity_id) %>%
-    mutate(respondend_existence = xExists == TRUE & yExists == TRUE & firstAct== activity1) %>%
-    pull(respondend_existence)
+    mutate(resp = xExists == TRUE & yExists == TRUE & firstAct== activity1) %>%
+    pull(resp)
 }
 
 
@@ -49,11 +49,11 @@ chain_response <- function(eventlog, activity1, activity2) {
     group_by(CASE_concept_name) %>%
     mutate(next.activity = lead(activity_id),
            response = activity_id == activity1 & next.activity != activity2) %>%
-    summarize(response = sum(response),
+    summarize(response_summarize = sum(response),
               xExists = activity1 %in% activity_id,
               yExists = activity2 %in% activity_id) %>%
-    mutate(respondend_existence = xExists == TRUE & yExists == TRUE & response == 0) %>%
-    pull(respondend_existence)
+    mutate(resp = xExists == TRUE & yExists == TRUE & response_summarize == 0) %>%
+    pull(resp)
 }
 
 
@@ -62,11 +62,11 @@ chain_precedence <- function(eventlog, activity1, activity2) {
     group_by(CASE_concept_name) %>%
     mutate(previous.activity = lag(activity_id),
            response = activity_id == activity2 & previous.activity != activity1) %>%
-    summarize(response = sum(response),
+    summarize(response_summarize = sum(response),
               xExists = activity1 %in% activity_id,
               yExists = activity2 %in% activity_id) %>%
-    mutate(respondend_existence = xExists == TRUE & yExists == TRUE & response == 0) %>%
-    pull(respondend_existence)
+    mutate(resp = xExists == TRUE & yExists == TRUE & response_summarize == 0) %>%
+    pull(resp)
 }
 
 
