@@ -18,7 +18,63 @@ responded_existence <- function(eventlog, activity1, activity2) {
     mutate(resp = xcount == 0 | ycount > 0)
 }
 
-constraints = c("Responded Existence")
+response <- function(eventlog, activity1, activity2) {
+  
+  pattern <-  paste(activity1, activity2, sep="|")
+  eventlog %>%
+    group_by(CASE_concept_name) %>% filter(grepl(pattern, activity_id)) %>%
+    summarize(lastAct = last(activity_id),
+              xExists = activity1 %in% activity_id,
+              yExists = activity2 %in% activity_id) %>%
+    mutate(respondend_existence = xExists == TRUE & yExists == TRUE & lastAct== activity2) %>%
+    pull(respondend_existence)
+}
+
+
+precedence <- function(eventlog, activity1, activity2) {
+  
+  pattern <-  paste(activity1, activity2, sep="|")
+  eventlog %>%
+    group_by(CASE_concept_name) %>% filter(grepl(pattern, activity_id)) %>%
+    summarize(firstAct = first(activity_id),
+              xExists = activity1 %in% activity_id,
+              yExists = activity2 %in% activity_id) %>%
+    mutate(respondend_existence = xExists == TRUE & yExists == TRUE & firstAct== activity1) %>%
+    pull(respondend_existence)
+}
+
+
+chain_response <- function(eventlog, activity1, activity2) {
+  eventlog %>%
+    group_by(CASE_concept_name) %>%
+    mutate(next.activity = lead(activity_id),
+           response = activity_id == activity1 & next.activity != activity2) %>%
+    summarize(response = sum(response),
+              xExists = activity1 %in% activity_id,
+              yExists = activity2 %in% activity_id) %>%
+    mutate(respondend_existence = xExists == TRUE & yExists == TRUE & response == 0) %>%
+    pull(respondend_existence)
+}
+
+
+chain_precedence <- function(eventlog, activity1, activity2) {
+  eventlog %>%
+    group_by(CASE_concept_name) %>%
+    mutate(previous.activity = lag(activity_id),
+           response = activity_id == activity2 & previous.activity != activity1) %>%
+    summarize(response = sum(response),
+              xExists = activity1 %in% activity_id,
+              yExists = activity2 %in% activity_id) %>%
+    mutate(respondend_existence = xExists == TRUE & yExists == TRUE & response == 0) %>%
+    pull(respondend_existence)
+}
+
+
+constraints = c("Responded Existence",
+                "Response",
+                "Precedence",
+                "Chain Response",
+                "Chain Precedence")
 
 
 ### Application
