@@ -166,11 +166,14 @@ server <- function(input, output, session) {
         filter(!alltrue)
     }
     
-    print("event filter")
-    print(event_filter)
+    filtered_events <- RV$eventlog %>% filter(!CASE_concept_name %in% event_filter$case_id)
+    
+    if (count(filtered_events) == 0) {
+      return()
+    }
     
     animate_process(
-      RV$eventlog %>% filter(!CASE_concept_name %in% event_filter$case_id),
+      filtered_events,
       mode = "off",
       timeline = TRUE,
       legend = "color",
@@ -188,8 +191,7 @@ server <- function(input, output, session) {
                         "Chain Response" = chain_response,
                         "Chain Precedence" = chain_precedence)
     constraint_matches = constraint(RV$eventlog, input$x, input$y)
-    print("matches")
-    print(constraint_matches)
+
     RV$filters[[toString(counter$countervalue)]] = constraint_matches
 
     # create a new entry
@@ -212,8 +214,6 @@ server <- function(input, output, session) {
     counter$countervalue = counter$countervalue + 1
     # add the entry to the table
     RV$constraints <<- rbind(RV$constraints, newrow)
-    
-    print(isolate(RV$constraints$id))
   })
   
   # print the table
@@ -237,7 +237,7 @@ server <- function(input, output, session) {
     selectedId <-
       as.numeric(strsplit(input$select_button, "_")[[1]][2])
     RV$filters[[toString(selectedId)]] <- NULL
-    print(paste("deleted Id:", selectedId))
+    
     # Remove the value of the table
     RV$constraints <<- RV$constraints[-which(RV$constraints$id == selectedId), ]
   })
@@ -245,9 +245,7 @@ server <- function(input, output, session) {
   observeEvent(input$sliderData, {
     print(input$sliderData)
   })
-  
-  
-  print(isolate(RV$constraints))
+
 }
 
 # Run the application
