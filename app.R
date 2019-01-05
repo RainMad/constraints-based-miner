@@ -23,11 +23,14 @@ response <- function(eventlog, activity1, activity2) {
   
   pattern <-  paste(activity1, activity2, sep="|")
   eventlog %>%
-    group_by(CASE_concept_name) %>% filter(grepl(pattern, activity_id)) %>%
+    group_by(CASE_concept_name) %>% 
+    mutate(exists = ifelse(activity1 %in% activity_id &  
+                             activity2 %in% activity_id, TRUE, FALSE)) %>%
     summarize(lastAct = last(activity_id),
               xExists = activity1 %in% activity_id,
-              yExists = activity2 %in% activity_id) %>%
-    mutate(resp = xExists == TRUE & yExists == TRUE & lastAct== activity2) %>%
+              yExists = activity2 %in% activity_id,
+              exists = first(exists)) %>%
+    mutate(resp = xExists == TRUE & yExists == TRUE & exists == TRUE, lastAct== activity2) %>%
     pull(resp)
 }
 
@@ -36,11 +39,14 @@ precedence <- function(eventlog, activity1, activity2) {
   
   pattern <-  paste(activity1, activity2, sep="|")
   eventlog %>%
-    group_by(CASE_concept_name) %>% filter(grepl(pattern, activity_id)) %>%
+    group_by(CASE_concept_name) %>% 
+    mutate(exists = ifelse(activity1 %in% activity_id &  
+                             activity2 %in% activity_id, TRUE, FALSE)) %>%
     summarize(firstAct = first(activity_id),
               xExists = activity1 %in% activity_id,
-              yExists = activity2 %in% activity_id) %>%
-    mutate(resp = xExists == TRUE & yExists == TRUE & firstAct== activity1) %>%
+              yExists = activity2 %in% activity_id,
+              exists = first(exists)) %>%
+    mutate(resp = xExists == TRUE & yExists == TRUE & exists == TRUE, firstAct== activity1) %>%
     pull(resp)
 }
 
