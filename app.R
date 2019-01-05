@@ -49,10 +49,7 @@ chain_response <- function(eventlog, activity1, activity2) {
     group_by(CASE_concept_name) %>%
     mutate(next.activity = lead(activity_id),
            response = activity_id == activity1 & next.activity != activity2) %>%
-    summarize(response_summarize = sum(response),
-              xExists = activity1 %in% activity_id,
-              yExists = activity2 %in% activity_id) %>%
-    mutate(resp = xExists == TRUE & yExists == TRUE & response_summarize == 0) %>%
+    summarize(resp = sum(response) == 0) %>%
     pull(resp)
 }
 
