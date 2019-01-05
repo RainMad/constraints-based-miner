@@ -197,7 +197,8 @@ server <- function(input, output, session) {
                         "Chain Response" = chain_response,
                         "Chain Precedence" = chain_precedence)
     constraint_matches = constraint(RV$eventlog, input$x, input$y)
-
+    print("matches")
+    print(constraint_matches)
     RV$filters[[toString(counter$countervalue)]] = constraint_matches
 
     # create a new entry
@@ -244,6 +245,7 @@ server <- function(input, output, session) {
     # get the id of the button which is the same like in the data frame
     selectedId <-
       as.numeric(strsplit(input$select_button, "_")[[1]][2])
+    RV$filters[[toString(selectedId)]] <- NULL
     print(paste("deleted Id:", selectedId))
     # Remove the value of the table
     RV$constraints <<- RV$constraints[-which(RV$constraints$id == selectedId), ]
