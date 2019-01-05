@@ -59,10 +59,7 @@ chain_precedence <- function(eventlog, activity1, activity2) {
     group_by(CASE_concept_name) %>%
     mutate(previous.activity = lag(activity_id),
            response = activity_id == activity2 & previous.activity != activity1) %>%
-    summarize(response_summarize = sum(response),
-              xExists = activity1 %in% activity_id,
-              yExists = activity2 %in% activity_id) %>%
-    mutate(resp = xExists == TRUE & yExists == TRUE & response_summarize == 0) %>%
+    summarize(resp = sum(response) == 0) %>%
     pull(resp)
 }
 
