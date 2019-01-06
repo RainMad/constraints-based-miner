@@ -7,24 +7,27 @@ library(processmapR)
 library(xesreadR)
 library(tidyverse)
 
-options(shiny.maxRequestSize=1*1024^3) # upload limit = 1GB
+options(shiny.maxRequestSize = 1 * 1024 ^ 3) # upload limit = 1GB
 
 ### constraints
 
 responded_existence <- function(eventlog, activity1, activity2) {
   eventlog %>%
     group_by(CASE_concept_name) %>%
-    summarize(xcount = sum(activity_id == activity1),
-              ycount = sum(activity_id == activity2)) %>%
+    summarize(
+      xcount = sum(activity_id == activity1),
+      ycount = sum(activity_id == activity2)
+    ) %>%
     mutate(resp = xcount == 0 | ycount > 0) %>%
     select(CASE_concept_name, resp)
 }
 
 response <- function(eventlog, activity1, activity2) {
   eventlog %>%
-    group_by(CASE_concept_name) %>% 
+    group_by(CASE_concept_name) %>%
     mutate(xoccurs = activity1 %in% activity_id) %>%
-    filter(activity_id == activity1 | activity_id == activity2 | !xoccurs) %>%
+    filter(activity_id == activity1 |
+             activity_id == activity2 | !xoccurs) %>%
     summarize(last_activity = last(activity_id),
               xoccurs = first(xoccurs)) %>%
     mutate(resp = last_activity == activity2 | !xoccurs)  %>%
@@ -33,11 +36,11 @@ response <- function(eventlog, activity1, activity2) {
 
 
 precedence <- function(eventlog, activity1, activity2) {
-  
   eventlog %>%
-    group_by(CASE_concept_name) %>% 
+    group_by(CASE_concept_name) %>%
     mutate(yoccurs = activity2 %in% activity_id) %>%
-    filter(activity_id == activity1 | activity_id == activity2 | !yoccurs) %>%
+    filter(activity_id == activity1 |
+             activity_id == activity2 | !yoccurs) %>%
     summarize(first_activity = first(activity_id),
               yoccurs = first(yoccurs)) %>%
     mutate(resp = first_activity == activity1 | !yoccurs) %>%
@@ -48,9 +51,12 @@ precedence <- function(eventlog, activity1, activity2) {
 chain_response <- function(eventlog, activity1, activity2) {
   eventlog %>%
     group_by(CASE_concept_name) %>%
-    mutate(next.activity = lead(activity_id),
-           response = activity_id == activity1 & 
-                      (is.na(next.activity) | next.activity != activity2)) %>%
+    mutate(
+      next.activity = lead(activity_id),
+      response = activity_id == activity1 &
+        (is.na(next.activity) |
+           next.activity != activity2)
+    ) %>%
     summarize(resp = sum(response) == 0) %>%
     select(CASE_concept_name, resp)
 }
@@ -59,9 +65,12 @@ chain_response <- function(eventlog, activity1, activity2) {
 chain_precedence <- function(eventlog, activity1, activity2) {
   eventlog %>%
     group_by(CASE_concept_name) %>%
-    mutate(previous.activity = lag(activity_id),
-           response = activity_id == activity2 & 
-                      (is.na(previous.activity) | previous.activity != activity1)) %>%
+    mutate(
+      previous.activity = lag(activity_id),
+      response = activity_id == activity2 &
+        (is.na(previous.activity) |
+           previous.activity != activity1)
+    ) %>%
     summarize(resp = sum(response) == 0) %>%
     select(CASE_concept_name, resp)
 }
@@ -96,15 +105,17 @@ at_most_once <- function(eventlog, activity) {
     select(CASE_concept_name, resp)
 }
 
-constraints = c("Responded Existence",
-                "Response",
-                "Precedence",
-                "Chain Response",
-                "Chain Precedence",
-                "First",
-                "Last",
-                "Participation",
-                "At Most Once")
+constraints = c(
+  "Responded Existence",
+  "Response",
+  "Precedence",
+  "Chain Response",
+  "Chain Precedence",
+  "First",
+  "Last",
+  "Participation",
+  "At Most Once"
+)
 
 dual_constraints = c("Responded Existence",
                      "Response",
@@ -117,39 +128,40 @@ dual_constraints = c("Responded Existence",
 ui <- fluidPage(
   titlePanel("Constraints Miner"),
   sidebarPanel(
-    fluidRow(
-      fileInput("xes_input", "Choose XES File",
-                accept = c("text/xes", ".xes"))
-    ),
-    fluidRow(
-      selectInput("x", "None", label = "Activity A")
-      ),
-    uiOutput("activity2_input"),
+    fluidRow(fileInput(
+      "xes_input", "Choose XES File",
+      accept = c("text/xes", ".xes")
+    )),
     fluidRow(
       selectInput("z", choices = constraints, label = "Constraint"),
       textOutput('constraintDescription', inline = TRUE),
-      tags$head(tags$style("#constraintDescription{
-                                color: gray;
-                                font-size: 15px;
-                                font-style: italic;
-                                padding-left: 15px;
-                             }"
-                           ))
-      ),
-    fluidRow(
-      actionButton(
-        inputId = "act",
-        label = "Add Constraint",
-        icon("plus", lib = "glyphicon")
-      )
-    ),
+      tags$head(
+        tags$style(
+          "#constraintDescription{
+          display: block;
+          color: gray;
+          font-size: 15px;
+          font-style: italic;
+          padding: 0 30px 30px;
+          }"
+                           )
+        )
+        ),
+    fluidRow(selectInput("x", "None", label = "Activity A")),
+    uiOutput("activity2_input"),
+    fluidRow(actionButton(
+      inputId = "act",
+      label = "Add Constraint",
+      icon("plus", lib = "glyphicon")
+    )),
     fluidRow(DT::dataTableOutput("table"))
-  ),
+        ),
   mainPanel(fluidPage(
-              width = 12,
-              shinycssloaders::withSpinner(processanimaterOutput("process", height="800px"))
-            ))
-)
+    width = 12,
+    shinycssloaders::withSpinner(processanimaterOutput("process", height =
+                                                         "800px"))
+  ))
+      )
 
 
 # Example data
@@ -180,24 +192,27 @@ server <- function(input, output, session) {
       } else {
         possible_activities <- unique(RV$eventlog$activity_id)
       }
-                                    
-      fluidRow(
-        selectInput("y", possible_activities, label = "Activity B")
-      )
+      
+      fluidRow(selectInput("y", possible_activities, label = "Activity B"))
     }
   })
   
   # read file only if fileinput changes
   observeEvent(input$xes_input, {
     RV$eventlog <- read_xes(input$xes_input$datapath)
-    RV$filters <- data.frame(row.names = unique(RV$eventlog$CASE_concept_name))
+    RV$filters <-
+      data.frame(row.names = unique(RV$eventlog$CASE_concept_name))
     RV$constraints <- NULL
     
     # set content of activity dropdown boxes
     possible_activities <- unique(RV$eventlog$activity_id)
     
-    updateSelectInput(session = session, inputId = "x", choices=possible_activities)
-    updateSelectInput(session = session, inputId = "y", choices=possible_activities)
+    updateSelectInput(session = session,
+                      inputId = "x",
+                      choices = possible_activities)
+    updateSelectInput(session = session,
+                      inputId = "y",
+                      choices = possible_activities)
   })
   
   # render graph
@@ -205,18 +220,20 @@ server <- function(input, output, session) {
     if (is.null(RV$eventlog)) {
       return()
     }
-  
+    
     if (length(RV$filters) == 0) {
-      event_filter <- data.frame(case_id = c()) 
+      event_filter <- data.frame(case_id = c())
     } else {
       event_filter <- data.frame(RV$filters)
-      event_filter$alltrue <- rowSums(event_filter) == length(event_filter) 
+      event_filter$alltrue <-
+        rowSums(event_filter) == length(event_filter)
       event_filter <- event_filter %>%
         rownames_to_column("case_id") %>%
         filter(!alltrue)
     }
     
-    filtered_events <- RV$eventlog %>% filter(!CASE_concept_name %in% event_filter$case_id)
+    filtered_events <-
+      RV$eventlog %>% filter(!CASE_concept_name %in% event_filter$case_id)
     
     if (count(filtered_events) == 0) {
       return()
@@ -230,34 +247,36 @@ server <- function(input, output, session) {
       initial_state = "paused"
     )
   })
-
+  
   # action which is fired when pressing the Ok Button for inserting constraints
   observeEvent(input$act, {
     # constraints
-    constraint = switch(input$z, 
-                        "Responded Existence" = responded_existence,
-                        "Response" = response,
-                        "Precedence" = precedence,
-                        "Chain Response" = chain_response,
-                        "Chain Precedence" = chain_precedence,
-                        "First" = first_constraint,
-                        "Last" = last_constraint,
-                        "Participation" = participation,
-                        "At Most Once" = at_most_once)
+    constraint = switch(
+      input$z,
+      "Responded Existence" = responded_existence,
+      "Response" = response,
+      "Precedence" = precedence,
+      "Chain Response" = chain_response,
+      "Chain Precedence" = chain_precedence,
+      "First" = first_constraint,
+      "Last" = last_constraint,
+      "Participation" = participation,
+      "At Most Once" = at_most_once
+    )
     
     if (input$z %in% dual_constraints) {
       constraint_matches = constraint(RV$eventlog, input$x, input$y)
     } else {
       constraint_matches = constraint(RV$eventlog, input$x)
     }
-
+    
     # dirty hacks to merge new constraints with old constraints
-    constraint_matches <- constraint_matches %>% 
+    constraint_matches <- constraint_matches %>%
       column_to_rownames("CASE_concept_name")
     colnames(constraint_matches) <- toString(counter$countervalue)
-    RV$filters = merge(RV$filters, constraint_matches, by="row.names") %>% 
-      remove_rownames %>% 
-      column_to_rownames(var="Row.names")
+    RV$filters = merge(RV$filters, constraint_matches, by = "row.names") %>%
+      remove_rownames %>%
+      column_to_rownames(var = "Row.names")
     
     # create a new entry
     newrow = data.frame(
@@ -265,7 +284,9 @@ server <- function(input, output, session) {
       activity1 = input$x,
       activity2 = input$y,
       constraint = input$z,
-      filtered = paste0(round((1 - sum(constraint_matches[[1]]) / length(constraint_matches[[1]])) * 100, 1), "%"),
+      filtered = paste0(round((
+        1 - sum(constraint_matches[[1]]) / length(constraint_matches[[1]])
+      ) * 100, 1), "%"),
       Delete = paste(
         "<button id='button_",
         counter$countervalue,
@@ -304,24 +325,27 @@ server <- function(input, output, session) {
     RV$filters[[toString(selectedId)]] <- NULL
     
     # Remove the value of the table
-    RV$constraints <<- RV$constraints[-which(RV$constraints$id == selectedId), ]
+    RV$constraints <<-
+      RV$constraints[-which(RV$constraints$id == selectedId),]
   })
   
   observeEvent(input$z, {
     output$constraintDescription <- renderText({
-      switch(input$z,
-             "Responded Existence" = "If Activity A occurs, then Activity B occurs too",
-             "Response" = "If Activity A occurs, then Activity B occurs after A",
-             "Precedence" = "B occurs only if preceded by A",
-             "Chain Response" = "If Activity A occurs, Activity B occurs immediately after it",
-             "Chain Precedence" = "Activity B occurs only if Activity A occurs immediately before it",
-             "First" = "Activity A is the first to occur",
-             "Last" = "Activity A is the last to occur",
-             "Participation" = "Activity A occurs at least once",
-             "At Most Once" = "Activity A occurs at most once")
-      })
+      switch(
+        input$z,
+        "Responded Existence" = "If Activity A occurs, then Activity B occurs too",
+        "Response" = "If Activity A occurs, then Activity B occurs after A",
+        "Precedence" = "B occurs only if preceded by A",
+        "Chain Response" = "If Activity A occurs, Activity B occurs immediately after it",
+        "Chain Precedence" = "Activity B occurs only if Activity A occurs immediately before it",
+        "First" = "Activity A is the first to occur",
+        "Last" = "Activity A is the last to occur",
+        "Participation" = "Activity A occurs at least once",
+        "At Most Once" = "Activity A occurs at most once"
+      )
+    })
   })
-
+  
 }
 
 # Run the application
