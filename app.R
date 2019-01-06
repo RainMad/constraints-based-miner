@@ -99,7 +99,7 @@ dual_constraints = c("Responded Existence",
 ### Application
 
 ui <- fluidPage(
-  titlePanel("UI"),
+  titlePanel("Constraints Miner"),
   sidebarPanel(
     fluidRow(
       fileInput("xes_input", "Choose XES File",
