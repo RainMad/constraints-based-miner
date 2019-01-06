@@ -5,6 +5,7 @@ library(shinycssloaders)
 library(processanimateR)
 library(processmapR)
 library(xesreadR)
+library(tidyverse)
 
 options(shiny.maxRequestSize=1*1024^3) # upload limit = 1GB
 
@@ -15,8 +16,8 @@ responded_existence <- function(eventlog, activity1, activity2) {
     group_by(CASE_concept_name) %>%
     summarize(xcount = sum(activity_id == activity1),
               ycount = sum(activity_id == activity2)) %>%
-    mutate(responded_existence = xcount == 0 | ycount > 0) %>%
-    pull(responded_existence)
+    mutate(resp = xcount == 0 | ycount > 0) %>%
+    select(CASE_concept_name, resp)
 }
 
 response <- function(eventlog, activity1, activity2) {
@@ -26,8 +27,8 @@ response <- function(eventlog, activity1, activity2) {
     filter(activity_id == activity1 | activity_id == activity2 | !xoccurs) %>%
     summarize(last_activity = last(activity_id),
               xoccurs = first(xoccurs)) %>%
-    mutate(resp = last_activity == activity2 | !xoccurs) %>%
-    pull(resp)
+    mutate(resp = last_activity == activity2 | !xoccurs)  %>%
+    select(CASE_concept_name, resp)
 }
 
 
@@ -40,7 +41,7 @@ precedence <- function(eventlog, activity1, activity2) {
     summarize(first_activity = first(activity_id),
               yoccurs = first(yoccurs)) %>%
     mutate(resp = first_activity == activity1 | !yoccurs) %>%
-    pull(resp)
+    select(CASE_concept_name, resp)
 }
 
 
@@ -51,7 +52,7 @@ chain_response <- function(eventlog, activity1, activity2) {
            response = activity_id == activity1 & 
                       (is.na(next.activity) | next.activity != activity2)) %>%
     summarize(resp = sum(response) == 0) %>%
-    pull(resp)
+    select(CASE_concept_name, resp)
 }
 
 
@@ -62,7 +63,7 @@ chain_precedence <- function(eventlog, activity1, activity2) {
            response = activity_id == activity2 & 
                       (is.na(previous.activity) | previous.activity != activity1)) %>%
     summarize(resp = sum(response) == 0) %>%
-    pull(resp)
+    select(CASE_concept_name, resp)
 }
 
 
@@ -70,14 +71,14 @@ first_constraint <- function(eventlog, activity1) {
   eventlog %>%
     group_by(CASE_concept_name) %>%
     summarize(resp = first(activity_id) == activity1) %>%
-    pull(resp)
+    select(CASE_concept_name, resp)
 }
 
 last_constraint <- function(eventlog, activity1) {
   eventlog %>%
     group_by(CASE_concept_name) %>%
     summarize(resp = last(activity_id) == activity1) %>%
-    pull(resp)
+    select(CASE_concept_name, resp)
 }
 
 
@@ -158,16 +159,22 @@ server <- function(input, output, session) {
   # counter value used as id for the releationships
   counter <- reactiveValues(countervalue = 0)
   
+  # remove UI for second activity if single constraint is selected
   output$activity2_input <- renderUI({
-    print(input$z)
     if (input$z %in% dual_constraints) {
-      print("hi")
+      if (is.null(RV$eventlog)) {
+        possible_activities <- "None"
+      } else {
+        possible_activities <- unique(RV$eventlog$activity_id)
+      }
+                                    
       fluidRow(
-        selectInput("y", "None", label = "Activity B")
+        selectInput("y", possible_activities, label = "Activity B")
       )
     }
   })
   
+  # read file only if fileinput changes
   observeEvent(input$xes_input, {
     RV$eventlog <- read_xes(input$xes_input$datapath)
     RV$filters <- data.frame(row.names = unique(RV$eventlog$CASE_concept_name))
@@ -180,18 +187,18 @@ server <- function(input, output, session) {
     updateSelectInput(session = session, inputId = "y", choices=possible_activities)
   })
   
+  # render graph
   output$process <- renderProcessanimater(expr = {
     if (is.null(RV$eventlog)) {
       return()
     }
-    
-    # create graph
-    
+  
     if (length(RV$filters) == 0) {
       event_filter <- data.frame(case_id = c()) 
     } else {
-      event_filter <- RV$filters %>% 
-        mutate(alltrue = rowSums(.) == length(.)) %>%
+      event_filter <- data.frame(RV$filters)
+      event_filter$alltrue <- rowSums(event_filter) == length(event_filter) 
+      event_filter <- event_filter %>%
         rownames_to_column("case_id") %>%
         filter(!alltrue)
     }
@@ -229,15 +236,21 @@ server <- function(input, output, session) {
       constraint_matches = constraint(RV$eventlog, input$x)
     }
 
-    RV$filters[[toString(counter$countervalue)]] = constraint_matches
-
+    # dirty hacks to merge new constraints with old constraints
+    constraint_matches <- constraint_matches %>% 
+      column_to_rownames("CASE_concept_name")
+    colnames(constraint_matches) <- toString(counter$countervalue)
+    RV$filters = merge(RV$filters, constraint_matches, by="row.names") %>% 
+      remove_rownames %>% 
+      column_to_rownames(var="Row.names")
+    
     # create a new entry
     newrow = data.frame(
       id = counter$countervalue,
       activity1 = input$x,
       activity2 = input$y,
       constraint = input$z,
-      filtered = paste0(round((1 - sum(constraint_matches) / length(constraint_matches)) * 100, 1), "%"),
+      filtered = paste0(round((1 - sum(constraint_matches[[1]]) / length(constraint_matches[[1]])) * 100, 1), "%"),
       Delete = paste(
         "<button id='button_",
         counter$countervalue,
@@ -287,3 +300,5 @@ server <- function(input, output, session) {
 
 # Run the application
 shinyApp(ui = ui, server = server)
+
+#runApp()
