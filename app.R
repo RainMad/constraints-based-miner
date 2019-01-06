@@ -67,20 +67,34 @@ chain_precedence <- function(eventlog, activity1, activity2) {
 }
 
 
-first_constraint <- function(eventlog, activity1) {
+first_constraint <- function(eventlog, activity) {
   eventlog %>%
     group_by(CASE_concept_name) %>%
-    summarize(resp = first(activity_id) == activity1) %>%
+    summarize(resp = first(activity_id) == activity) %>%
     select(CASE_concept_name, resp)
 }
 
-last_constraint <- function(eventlog, activity1) {
+last_constraint <- function(eventlog, activity) {
   eventlog %>%
     group_by(CASE_concept_name) %>%
-    summarize(resp = last(activity_id) == activity1) %>%
+    summarize(resp = last(activity_id) == activity) %>%
     select(CASE_concept_name, resp)
 }
 
+participation <- function(eventlog, activity) {
+  eventlog %>%
+    group_by(CASE_concept_name) %>%
+    summarize(resp = activity %in% activity_id) %>%
+    select(CASE_concept_name, resp)
+}
+
+at_most_once <- function(eventlog, activity) {
+  eventlog %>%
+    group_by(CASE_concept_name) %>%
+    summarize(cnt = sum(activity == activity_id)) %>%
+    mutate(resp = cnt <= 1) %>%
+    select(CASE_concept_name, resp)
+}
 
 constraints = c("Responded Existence",
                 "Response",
@@ -88,7 +102,9 @@ constraints = c("Responded Existence",
                 "Chain Response",
                 "Chain Precedence",
                 "First",
-                "Last")
+                "Last",
+                "Participation",
+                "At Most Once")
 
 dual_constraints = c("Responded Existence",
                      "Response",
@@ -116,7 +132,7 @@ ui <- fluidPage(
                                 color: gray;
                                 font-size: 15px;
                                 font-style: italic;
-                                padding-left: 25px;
+                                padding-left: 15px;
                              }"
                            ))
       ),
@@ -225,7 +241,9 @@ server <- function(input, output, session) {
                         "Chain Response" = chain_response,
                         "Chain Precedence" = chain_precedence,
                         "First" = first_constraint,
-                        "Last" = last_constraint)
+                        "Last" = last_constraint,
+                        "Participation" = participation,
+                        "At Most Once" = at_most_once)
     
     if (input$z %in% dual_constraints) {
       constraint_matches = constraint(RV$eventlog, input$x, input$y)
@@ -290,14 +308,17 @@ server <- function(input, output, session) {
   })
   
   observeEvent(input$z, {
-    output$constraintDescription <- renderText({switch(input$z,
-                                                        "Responded Existence" = "If Activity A occurs, then Activity B occurs too",
-                                                        "Response" = "If Activity A occurs, then Activity B occurs after A",
-                                                        "Precedence" = "B occurs only if preceded by A",
-                                                        "Chain Response" = "If Activity A occurs, Activity B occurs immediately after it",
-                                                        "Chain Precedence" = "Activity B occurs only if Activity A occurs immediately before it",
-                                                        "First" = "Activity A is the first to occur",
-                                                        "Last" = "Activity A is the last to occur")
+    output$constraintDescription <- renderText({
+      switch(input$z,
+             "Responded Existence" = "If Activity A occurs, then Activity B occurs too",
+             "Response" = "If Activity A occurs, then Activity B occurs after A",
+             "Precedence" = "B occurs only if preceded by A",
+             "Chain Response" = "If Activity A occurs, Activity B occurs immediately after it",
+             "Chain Precedence" = "Activity B occurs only if Activity A occurs immediately before it",
+             "First" = "Activity A is the first to occur",
+             "Last" = "Activity A is the last to occur",
+             "Participation" = "Activity A occurs at least once",
+             "At Most Once" = "Activity A occurs at most once")
       })
   })
 
