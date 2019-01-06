@@ -106,21 +106,19 @@ ui <- fluidPage(
                 accept = c("text/xes", ".xes"))
     ),
     fluidRow(
-      sliderInput(
-        "data_used",
-        "% of Data",
-        min = 0,
-        max = 100,
-        post = "%",
-        value = 90
-      )
-    ),
-    fluidRow(
       selectInput("x", "None", label = "Activity A")
       ),
     uiOutput("activity2_input"),
     fluidRow(
-      selectInput("z", choices = constraints, label = "Constraint")
+      selectInput("z", choices = constraints, label = "Constraint"),
+      textOutput('constraintDescription', inline = TRUE),
+      tags$head(tags$style("#constraintDescription{
+                                color: gray;
+                                font-size: 15px;
+                                font-style: italic;
+                                padding-left: 25px;
+                             }"
+                           ))
       ),
     fluidRow(
       actionButton(
@@ -131,8 +129,7 @@ ui <- fluidPage(
     ),
     fluidRow(DT::dataTableOutput("table"))
   ),
-  mainPanel("Output",
-            fluidPage(
+  mainPanel(fluidPage(
               width = 12,
               shinycssloaders::withSpinner(processanimaterOutput("process", height="800px"))
             ))
@@ -292,8 +289,16 @@ server <- function(input, output, session) {
     RV$constraints <<- RV$constraints[-which(RV$constraints$id == selectedId), ]
   })
   
-  observeEvent(input$sliderData, {
-    print(input$sliderData)
+  observeEvent(input$z, {
+    output$constraintDescription <- renderText({switch(input$z,
+                                                        "Responded Existence" = "If Activity A occurs, then Activity B occurs too",
+                                                        "Response" = "If Activity A occurs, then Activity B occurs after A",
+                                                        "Precedence" = "B occurs only if preceded by A",
+                                                        "Chain Response" = "If Activity A occurs, Activity B occurs immediately after it",
+                                                        "Chain Precedence" = "Activity B occurs only if Activity A occurs immediately before it",
+                                                        "First" = "Activity A is the first to occur",
+                                                        "Last" = "Activity A is the last to occur")
+      })
   })
 
 }
