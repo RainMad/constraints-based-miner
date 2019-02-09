@@ -1,3 +1,6 @@
+# Visual Studio files
+.vs/
+
 # History files
 .Rhistory
 .Rapp.history
