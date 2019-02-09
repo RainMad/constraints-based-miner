@@ -34,7 +34,6 @@ response <- function(eventlog, activity1, activity2) {
     select(CASE_concept_name, resp)
 }
 
-
 precedence <- function(eventlog, activity1, activity2) {
   eventlog %>%
     group_by(CASE_concept_name) %>%
@@ -46,7 +45,6 @@ precedence <- function(eventlog, activity1, activity2) {
     mutate(resp = first_activity == activity1 | !yoccurs) %>%
     select(CASE_concept_name, resp)
 }
-
 
 chain_response <- function(eventlog, activity1, activity2) {
   eventlog %>%
@@ -61,7 +59,6 @@ chain_response <- function(eventlog, activity1, activity2) {
     select(CASE_concept_name, resp)
 }
 
-
 chain_precedence <- function(eventlog, activity1, activity2) {
   eventlog %>%
     group_by(CASE_concept_name) %>%
@@ -74,7 +71,6 @@ chain_precedence <- function(eventlog, activity1, activity2) {
     summarize(resp = sum(response) == 0) %>%
     select(CASE_concept_name, resp)
 }
-
 
 first_constraint <- function(eventlog, activity) {
   eventlog %>%
@@ -123,8 +119,6 @@ dual_constraints = c("Responded Existence",
                      "Chain Response",
                      "Chain Precedence")
 
-### Application
-
 ui <- fluidPage(
   titlePanel("Constraints Miner"),
   sidebarPanel(
@@ -153,16 +147,14 @@ ui <- fluidPage(
       inputId = "act",
       label = "Add Constraint",
       icon("plus", lib = "glyphicon")
-    )),
-    fluidRow(DT::dataTableOutput("table"))
+    ))
         ),
   mainPanel(fluidPage(
     width = 12,
-    shinycssloaders::withSpinner(processanimaterOutput("process", height =
-                                                         "800px"))
+    shinycssloaders::withSpinner(processanimaterOutput("process", height = "800px")),
+    fluidRow(DT::dataTableOutput("table"))
   ))
-      )
-
+)
 
 # Example data
 RV <-
@@ -308,8 +300,8 @@ server <- function(input, output, session) {
     escape = FALSE,
     rownames = FALSE,
     options = list(
-      pageLength = 10,
-      dom = 't',
+      pageLength = 5,
+      dom = 'tip',
       autoWidth = TRUE,
       columnDefs = list(list(
         className = 'dt-center', targets = "_all"
