@@ -72,14 +72,14 @@ chain_precedence <- function(eventlog, activity1, activity2) {
     select(CASE_concept_name, resp)
 }
 
-first_constraint <- function(eventlog, activity) {
+init_constraint <- function(eventlog, activity) {
   eventlog %>%
     group_by(CASE_concept_name) %>%
     summarize(resp = first(activity_id) == activity) %>%
     select(CASE_concept_name, resp)
 }
 
-last_constraint <- function(eventlog, activity) {
+end_constraint <- function(eventlog, activity) {
   eventlog %>%
     group_by(CASE_concept_name) %>%
     summarize(resp = last(activity_id) == activity) %>%
@@ -107,8 +107,8 @@ constraints = c(
   "Precedence",
   "Chain Response",
   "Chain Precedence",
-  "First",
-  "Last",
+  "Init",
+  "End",
   "Participation",
   "At Most Once"
 )
@@ -245,15 +245,24 @@ server <- function(input, output, session) {
     # constraints
     constraint = switch(
       input$z,
+      "Participation" = participation,
+      "At Most Once" = at_most_once,
+      "Init" = init_constraint,
+      "End" = end_constraint,
       "Responded Existence" = responded_existence,
       "Response" = response,
-      "Precedence" = precedence,
+      # Alternate response
       "Chain Response" = chain_response,
+      "Precedence" = precedence,
+      # Alternate precedence
       "Chain Precedence" = chain_precedence,
-      "First" = first_constraint,
-      "Last" = last_constraint,
-      "Participation" = participation,
-      "At Most Once" = at_most_once
+      # Coexistence
+      # Succession
+      # AlternateSuccession
+      # ChainSuccession
+      # NotChainSuccession
+      # NotSuccession
+      # NotCoExistence   
     )
     
     if (input$z %in% dual_constraints) {
@@ -330,8 +339,8 @@ server <- function(input, output, session) {
         "Precedence" = "B occurs only if preceded by A",
         "Chain Response" = "If Activity A occurs, Activity B occurs immediately after it",
         "Chain Precedence" = "Activity B occurs only if Activity A occurs immediately before it",
-        "First" = "Activity A is the first to occur",
-        "Last" = "Activity A is the last to occur",
+        "Init" = "Activity A is the first to occur",
+        "End" = "Activity A is the last to occur",
         "Participation" = "Activity A occurs at least once",
         "At Most Once" = "Activity A occurs at most once"
       )
