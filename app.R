@@ -147,12 +147,12 @@ ui <- fluidPage(
       inputId = "act",
       label = "Add Constraint",
       icon("plus", lib = "glyphicon")
-    ))
+    )),
+    fluidRow(DT::dataTableOutput("table"))
         ),
   mainPanel(fluidPage(
     width = 12,
-    shinycssloaders::withSpinner(processanimaterOutput("process", height = "800px")),
-    fluidRow(DT::dataTableOutput("table"))
+    shinycssloaders::withSpinner(processanimaterOutput("process", height = "800px"))
   ))
 )
 
@@ -266,8 +266,10 @@ server <- function(input, output, session) {
     )
     
     if (input$z %in% dual_constraints) {
+      tbl_activity_b <- input$y
       constraint_matches = constraint(RV$eventlog, input$x, input$y)
     } else {
+      tbl_activity_b <- "-"
       constraint_matches = constraint(RV$eventlog, input$x)
     }
     
@@ -281,11 +283,11 @@ server <- function(input, output, session) {
     
     # create a new entry
     newrow = data.frame(
-      id = counter$countervalue,
-      activity1 = input$x,
-      activity2 = input$y,
-      constraint = input$z,
-      filtered = paste0(round((
+      Id = counter$countervalue,
+      ActivityA = input$x,
+      ActivityB = tbl_activity_b,
+      Constraint = input$z,
+      Filtered = paste0(round((
         1 - sum(constraint_matches[[1]]) / length(constraint_matches[[1]])
       ) * 100, 1), "%"),
       Delete = paste(
@@ -327,7 +329,7 @@ server <- function(input, output, session) {
     
     # Remove the value of the table
     RV$constraints <<-
-      RV$constraints[-which(RV$constraints$id == selectedId),]
+      RV$constraints[-which(RV$constraints$Id == selectedId),]
   })
   
   observeEvent(input$z, {
