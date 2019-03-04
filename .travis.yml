@@ -31,7 +31,7 @@ before_install:
   - "phantomjs --version"
 
 notifications:
-  slack:
+  slack: constraintsba-jbr8585:JWjo9I1yMNswIx5gxg3Mj0O9
     on_success: always
 
 script:
