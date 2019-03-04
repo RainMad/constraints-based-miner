@@ -336,7 +336,7 @@ server <- function(input, output, session) {
     output$constraintDescription <- renderText({
       switch(
         input$z,
-        "Responded Existenceee" = "If Activity A occurs, then Activity B occurs too",
+        "Responded Existence" = "If Activity A occurs, then Activity B occurs too",
         "Response" = "If Activity A occurs, then Activity B occurs after A",
         "Precedence" = "B occurs only if preceded by A",
         "Chain Response" = "If Activity A occurs, Activity B occurs immediately after it",
