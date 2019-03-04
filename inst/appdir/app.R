@@ -349,6 +349,7 @@ server <- function(input, output, session) {
     })
   })
   
+  exportTestValues(RV = { RV$eventlog })
 }
 
 # Run the application
