@@ -32,7 +32,6 @@ before_install:
 
 notifications:
   slack: constraintsba-jbr8585:JWjo9I1yMNswIx5gxg3Mj0O9
-    on_success: always
 
 script:
   - R -f testthat.R
