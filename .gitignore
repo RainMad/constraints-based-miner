@@ -42,3 +42,4 @@ rsconnect/
 # Data directory
 data/*
 !data/.gitkeep
+packrat/lib*/
