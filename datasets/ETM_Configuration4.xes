@@ -1,0 +1,3662 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- This file has been generated with the OpenXES library. It conforms -->
+<!-- to the XML serialization of the XES standard for log storage and -->
+<!-- management. -->
+<!-- XES standard version: 1.0 -->
+<!-- OpenXES library version: 1.0RC7 -->
+<!-- OpenXES is available from http://www.openxes.org/ -->
+<log xes.version="1.0" xes.features="nested-attributes" openxes.version="1.0RC7" xmlns="http://www.xes-standard.org/">
+	<extension name="Metadata_Time" prefix="meta_time" uri="http://www.xes-standard.org/meta_time.xesext"/>
+	<extension name="Lifecycle" prefix="lifecycle" uri="http://www.xes-standard.org/lifecycle.xesext"/>
+	<extension name="Metadata_Lifecycle" prefix="meta_life" uri="http://www.xes-standard.org/meta_life.xesext"/>
+	<extension name="Time" prefix="time" uri="http://www.xes-standard.org/time.xesext"/>
+	<extension name="Metadata_Concept" prefix="meta_concept" uri="http://www.xes-standard.org/meta_concept.xesext"/>
+	<extension name="Completeness metadata" prefix="meta_completeness" uri="http://www.xes-standard.org/meta_completeness.xesext"/>
+	<extension name="3TU metadata" prefix="meta_3TU" uri="http://www.xes-standard.org/meta_3TU.xesext"/>
+	<extension name="Concept" prefix="concept" uri="http://www.xes-standard.org/concept.xesext"/>
+	<extension name="General metadata" prefix="meta_general" uri="http://www.xes-standard.org/meta_general.xesext"/>
+	<global scope="trace">
+		<string key="concept:name" value="UNKNOWN"/>
+	</global>
+	<global scope="event">
+		<string key="lifecycle:transition" value="UNKNOWN"/>
+		<string key="concept:name" value="UNKNOWN"/>
+		<date key="time:timestamp" value="1970-01-01T01:00:00+01:00"/>
+	</global>
+	<classifier name="MXML Legacy Classifier" keys="concept:name lifecycle:transition"/>
+	<float key="meta_time:duration_max" value="2604.917"/>
+	<string key="meta_3TU:language" value="eng"/>
+	<string key="meta_3TU:log_type" value="Synthetic model"/>
+	<float key="meta_life:transition_events_standard_deviation" value="0.0">
+		<float key="complete" value="0.0"/>
+	</float>
+	<string key="meta_3TU:description" value="Loan application example, configuration 4"/>
+	<string key="meta_3TU:process_type" value="Explicitly structured"/>
+	<int key="meta_general:events_min" value="6"/>
+	<int key="meta_life:different_transitions_total" value="1"/>
+	<float key="meta_concept:different_names_average" value="6.0"/>
+	<int key="meta_life:different_transitions_min" value="1"/>
+	<string key="meta_3TU:creation_place" value="Eindhoven"/>
+	<int key="meta_general:events_max" value="6"/>
+	<int key="meta_general:traces_total" value="105"/>
+	<int key="meta_concept:named_events_total" value="630">
+		<int key="D" value="45"/>
+		<int key="E" value="45"/>
+		<int key="F" value="60"/>
+		<int key="B2" value="105"/>
+		<int key="A" value="105"/>
+		<int key="C" value="105"/>
+		<int key="D2" value="60"/>
+		<int key="B1" value="105"/>
+	</int>
+	<float key="meta_concept:different_names_standard_deviation" value="0.0"/>
+	<float key="meta_life:transition_events_average" value="6.0">
+		<float key="complete" value="6.0"/>
+	</float>
+	<string key="meta_3TU:source_institute_type" value="University"/>
+	<string key="meta_3TU:creation_person" value="Joos Buijs"/>
+	<float key="meta_time:duration_standard_deviation" value="428.837"/>
+	<string key="concept:name" value="ETM_Configuration4"/>
+	<int key="meta_concept:named_events_max" value="6">
+		<int key="D" value="1"/>
+		<int key="E" value="1"/>
+		<int key="F" value="1"/>
+		<int key="B2" value="1"/>
+		<int key="A" value="1"/>
+		<int key="C" value="1"/>
+		<int key="D2" value="1"/>
+		<int key="B1" value="1"/>
+	</int>
+	<float key="meta_general:events_standard_deviation" value="0.0"/>
+	<string key="meta_3TU:doi" value="doi:10.4121/7489b402-bb34-4685-aa02-b002a4ddb698"/>
+	<float key="meta_time:log_duration" value="32844.457"/>
+	<float key="meta_concept:named_events_average" value="6.0">
+		<float key="D" value="0.429"/>
+		<float key="E" value="0.429"/>
+		<float key="F" value="0.571"/>
+		<float key="B2" value="1.0"/>
+		<float key="A" value="1.0"/>
+		<float key="C" value="1.0"/>
+		<float key="D2" value="0.571"/>
+		<float key="B1" value="1.0"/>
+	</float>
+	<date key="meta_3TU:creation_time" value="2013-04-16T00:00:00+02:00"/>
+	<date key="meta_time:log_start_time" value="2013-04-16T10:08:03.141+02:00"/>
+	<int key="meta_life:different_transitions_max" value="1"/>
+	<float key="meta_time:duration_average" value="1540.11"/>
+	<int key="meta_life:transition_events_min" value="6">
+		<int key="complete" value="6"/>
+	</int>
+	<int key="meta_general:events_total" value="630"/>
+	<float key="meta_time:duration_total" value="161711.597"/>
+	<string key="meta_3TU:rights" value="Public"/>
+	<date key="meta_time:log_end_time" value="2013-04-16T19:15:27.598+02:00"/>
+	<float key="meta_concept:named_events_standard_deviation" value="0.0">
+		<float key="D" value="0.497"/>
+		<float key="E" value="0.497"/>
+		<float key="F" value="0.497"/>
+		<float key="B2" value="0.0"/>
+		<float key="A" value="0.0"/>
+		<float key="C" value="0.0"/>
+		<float key="D2" value="0.497"/>
+		<float key="B1" value="0.0"/>
+	</float>
+	<string key="meta_3TU:source_institute" value="Eindhoven University of Technology"/>
+	<float key="meta_life:different_transitions_standard_deviation" value="0.0"/>
+	<int key="meta_concept:different_names_min" value="6"/>
+	<float key="meta_life:different_transitions_average" value="1.0"/>
+	<int key="meta_concept:different_names_max" value="6"/>
+	<int key="meta_concept:different_names_total" value="8"/>
+	<int key="meta_life:transition_events_max" value="6">
+		<int key="complete" value="6"/>
+	</int>
+	<string key="meta_3TU:source_model" value="SEQ( LEAF: A+complete , LEAF: B1+complete , XOR( LEAF: D+complete , LEAF: D2+complete ) , LEAF: B2+complete , LEAF: C+complete , XOR( LEAF: E+complete , LEAF: F+complete ) )"/>
+	<string key="meta_3TU:source_program" value="Process Tree Simulator (ProM)"/>
+	<int key="meta_concept:named_events_min" value="6">
+		<int key="D" value="0"/>
+		<int key="E" value="0"/>
+		<int key="F" value="0"/>
+		<int key="B2" value="1"/>
+		<int key="A" value="1"/>
+		<int key="C" value="1"/>
+		<int key="D2" value="0"/>
+		<int key="B1" value="1"/>
+	</int>
+	<int key="meta_general:classifiers" value="1">
+		<string key="MXML Legacy Classifier" value="concept:name lifecycle:transition">
+			<float key="meta_general:classified_events_average" value="6.0">
+				<float key="A+complete" value="1.0"/>
+				<float key="B1+complete" value="1.0"/>
+				<float key="D2+complete" value="0.571"/>
+				<float key="C+complete" value="1.0"/>
+				<float key="F+complete" value="0.571"/>
+				<float key="B2+complete" value="1.0"/>
+				<float key="E+complete" value="0.429"/>
+				<float key="D+complete" value="0.429"/>
+			</float>
+			<int key="meta_general:classified_events_total" value="630">
+				<int key="A+complete" value="105"/>
+				<int key="B1+complete" value="105"/>
+				<int key="D2+complete" value="60"/>
+				<int key="C+complete" value="105"/>
+				<int key="F+complete" value="60"/>
+				<int key="B2+complete" value="105"/>
+				<int key="E+complete" value="45"/>
+				<int key="D+complete" value="45"/>
+			</int>
+			<int key="meta_general:classified_events_max" value="6">
+				<int key="A+complete" value="1"/>
+				<int key="B1+complete" value="1"/>
+				<int key="D2+complete" value="1"/>
+				<int key="C+complete" value="1"/>
+				<int key="F+complete" value="1"/>
+				<int key="B2+complete" value="1"/>
+				<int key="E+complete" value="1"/>
+				<int key="D+complete" value="1"/>
+			</int>
+			<int key="meta_general:different_classified_max" value="6"/>
+			<float key="meta_general:different_classified_average" value="6.0"/>
+			<float key="meta_general:different_classified_standard_deviation" value="0.0"/>
+			<float key="meta_general:classified_events_standard_deviation" value="0.0">
+				<float key="A+complete" value="0.0"/>
+				<float key="B1+complete" value="0.0"/>
+				<float key="D2+complete" value="0.497"/>
+				<float key="C+complete" value="0.0"/>
+				<float key="F+complete" value="0.497"/>
+				<float key="B2+complete" value="0.0"/>
+				<float key="E+complete" value="0.497"/>
+				<float key="D+complete" value="0.497"/>
+			</float>
+			<int key="meta_general:classified_events_min" value="6">
+				<int key="A+complete" value="1"/>
+				<int key="B1+complete" value="1"/>
+				<int key="D2+complete" value="0"/>
+				<int key="C+complete" value="1"/>
+				<int key="F+complete" value="0"/>
+				<int key="B2+complete" value="1"/>
+				<int key="E+complete" value="0"/>
+				<int key="D+complete" value="0"/>
+			</int>
+			<int key="meta_general:different_classified_total" value="8"/>
+			<int key="meta_general:different_traces" value="2">
+				<int key="A+complete;B1+complete;D2+complete;B2+complete;C+complete;F+complete" value="60"/>
+				<int key="A+complete;B1+complete;D+complete;B2+complete;C+complete;E+complete" value="45"/>
+			</int>
+			<int key="meta_general:different_classified_min" value="6"/>
+		</string>
+	</int>
+	<string key="meta_3TU:creation_institute" value="Eindhoven University of Technology"/>
+	<float key="meta_general:events_average" value="6.0"/>
+	<string key="meta_completeness:completeness" value="MULTIPLE">
+		<float key="10-fold_cross-validation.completeness" value="0.8026703651478104"/>
+	</string>
+	<int key="meta_life:transition_events_total" value="630">
+		<int key="complete" value="630"/>
+	</int>
+	<float key="meta_time:duration_min" value="669.024"/>
+	<trace>
+		<string key="concept:name" value="trace 0"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:08:03.141+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:16:08.338+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:22:14.592+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:30:51.776+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:35:49.225+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T10:45:40.725+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 1"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:15:00.260+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:19:58.980+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:24:45.213+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:24:58.576+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:26:37.477+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T10:34:36.871+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 2"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:15:17.690+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:19:22.745+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:21:38.387+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:28:46.175+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:34:46.607+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T10:35:33.790+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 3"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:23:53.097+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:30:53.742+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:32:50.749+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:40:19.903+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:40:51.752+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T10:45:31.644+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 4"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:25:49.791+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:30:39.791+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:36:26.812+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:43:04.642+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:46:45.199+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T10:47:30.520+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 5"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:26:34.333+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:36:07.466+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:38:15.250+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:43:36.291+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:47:38.886+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T10:48:15.546+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 6"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:31:40.228+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:34:29.322+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:37:06.756+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:46:47.958+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:51:23.705+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T10:54:39.787+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 7"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:36:49.226+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:44:37.336+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:44:51.629+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:46:14.044+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:46:28.767+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T10:52:10.443+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 8"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:43:45.166+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:44:25.705+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:49:14.037+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:54:26.098+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:58:40.597+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T11:02:23.741+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 9"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:47:25.778+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:55:26.072+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:02:23.453+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:07:57.064+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:08:25.922+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T11:15:59.278+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 10"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:48:29.504+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:55:20.399+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:05:09.227+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:07:37.325+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:11:27.410+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T11:11:32.771+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 11"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:58:05.290+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T10:59:09.081+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:07:34.003+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:14:53.145+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:15:56.674+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T11:20:23.881+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 12"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:03:07.123+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:12:56.633+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:13:14.090+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:21:19.565+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:29:21.239+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T11:37:11.170+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 13"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:04:35.052+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:11:37.377+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:19:54.741+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:25:37.418+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:28:08.380+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T11:34:26.377+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 14"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:08:16.190+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:17:51.077+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:25:33.198+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:35:20.818+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:36:10.207+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T11:41:03.605+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 15"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:08:54.726+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:10:43.286+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:17:33.473+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:20:22.728+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:26:24.776+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T11:35:37.413+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 16"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:11:39.871+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:20:38.119+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:23:35.749+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:31:00.833+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:40:07.860+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T11:45:35.969+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 17"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:14:45.299+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:22:26.923+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:31:13.176+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:39:24.956+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:42:18.841+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T11:47:11.369+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 18"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:19:28.193+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:20:09.091+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:22:55.529+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:23:19.922+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:24:40.589+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T11:31:56.230+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 19"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:26:25.005+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:30:12.926+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:39:45.387+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:43:14.461+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:47:54.663+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T11:55:43.220+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 20"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:35:58.322+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:41:53.499+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:44:18.540+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:49:27.875+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:51:24.979+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T11:52:02.667+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 21"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:40:50.998+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:48:15.270+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:58:10.098+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:01:23.005+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:07:46.507+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T12:09:40.158+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 22"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:41:45.218+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:50:43.903+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:53:52.568+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:59:30.419+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:03:48.834+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T12:12:25.034+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 23"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:43:31.067+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:52:15.811+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:56:45.799+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:06:38.453+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:11:28.907+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T12:12:25.642+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 24"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:46:34.916+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:50:18.945+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:59:12.385+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:08:39.641+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:12:56.282+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T12:20:58.258+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 25"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:47:35.673+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:56:19.207+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:56:51.797+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:05:40.430+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:09:14.285+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T12:11:11.667+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 26"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:52:35.103+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T11:55:43.397+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:05:38.180+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:15:19.450+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:15:37.381+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T12:22:26.066+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 27"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:00:39.483+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:04:47.671+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:08:23.697+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:08:36.620+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:12:14.052+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T12:19:43.106+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 28"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:02:02.296+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:05:27.341+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:11:41.639+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:20:50.848+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:21:49.602+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T12:28:47.029+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 29"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:08:15.211+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:10:36.843+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:12:57.773+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:16:44.873+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:20:08.480+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T12:25:30.807+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 30"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:10:44.592+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:16:31.826+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:23:11.433+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:29:42.728+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:35:10.745+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T12:35:21.480+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 31"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:17:51.829+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:19:01.211+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:26:52.636+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:32:42.268+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:39:19.486+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T12:45:15.255+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 32"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:26:06.165+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:31:56.623+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:36:49.327+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:46:32.837+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:54:32.159+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T12:55:55.516+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 33"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:27:57.868+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:32:06.286+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:34:44.686+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:44:26.213+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:49:52.050+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T12:58:46.616+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 34"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:32:03.015+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:39:59.449+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:45:55.786+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:46:45.057+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:49:08.161+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T12:51:58.720+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 35"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:38:32.770+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:40:24.401+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:47:13.680+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:52:44.200+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:02:40.735+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T13:10:05.024+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 36"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:43:17.001+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:51:15.114+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:00:38.485+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:05:13.282+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:11:11.368+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T13:19:44.571+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 37"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:44:16.270+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:54:13.079+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:54:31.738+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:55:17.985+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:57:31.413+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T12:59:29.282+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 38"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:49:51.441+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:50:51.306+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:59:49.314+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:09:38.134+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:14:39.814+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T13:24:28.927+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 39"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T12:59:29.924+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:03:33.105+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:10:09.757+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:10:15.260+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:16:07.451+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T13:25:02.208+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 40"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:09:20.497+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:16:52.623+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:26:05.263+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:29:01.045+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:33:09.409+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T13:40:10.509+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 41"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:17:12.103+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:24:17.817+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:29:03.728+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:30:43.628+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:37:43.624+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T13:39:44.438+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 42"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:26:27.624+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:31:07.278+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:39:20.404+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:44:40.744+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:53:59.198+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T13:54:24.106+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 43"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:33:19.148+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:42:50.380+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:47:20.973+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:54:19.887+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:54:37.779+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T13:58:02.212+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 44"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:37:49.064+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:38:16.423+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:43:25.949+02:00"/>
+			<string key="concept:name" value="D"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:46:00.859+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:50:13.790+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="E"/>
+			<date key="time:timestamp" value="2013-04-16T13:57:39.725+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 45"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:38:30.631+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:43:12.952+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:51:32.623+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:00:42.826+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:07:31.556+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T14:12:08.652+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 46"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:45:47.588+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:50:21.973+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:50:37.251+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:57:24.314+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:02:40.755+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T14:03:22.897+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 47"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:50:36.198+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:00:22.615+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:00:36.655+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:00:43.866+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:05:31.289+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T14:06:47.495+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 48"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T13:59:28.935+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:03:10.980+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:04:34.804+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:13:31.895+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:21:41.725+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T14:28:40.650+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 49"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:06:55.229+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:14:24.378+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:20:03.256+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:22:19.856+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:23:52.348+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T14:29:27.543+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 50"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:09:46.270+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:10:24.043+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:19:09.046+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:27:52.294+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:30:58.593+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T14:39:10.201+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 51"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:19:40.875+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:26:25.662+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:29:17.649+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:30:42.820+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:37:59.355+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T14:46:22.966+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 52"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:28:37.217+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:28:49.530+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:30:21.592+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:34:21.980+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:42:48.029+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T14:46:19.345+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 53"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:36:57.398+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:41:41.174+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:49:57.558+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:55:57.199+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:58:06.163+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T14:59:41.139+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 54"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:40:21.872+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:41:08.305+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:49:48.160+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:55:48.895+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:03:08.075+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T15:11:55.629+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 55"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:41:02.717+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:47:46.454+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:49:21.081+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:50:33.539+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:58:42.419+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T15:08:32.004+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 56"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:47:50.349+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:50:26.998+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:52:01.676+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:58:22.043+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:59:22.742+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T15:00:09.627+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 57"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:49:11.155+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:50:42.742+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:55:24.210+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:03:45.824+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:09:17.031+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T15:11:02.261+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 58"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:53:12.742+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:56:52.225+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:57:17.232+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:58:54.422+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:03:30.438+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T15:11:17.913+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 59"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T14:56:24.650+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:05:39.913+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:08:22.583+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:15:02.496+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:20:38.660+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T15:20:48.577+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 60"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:05:50.585+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:14:49.646+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:18:02.215+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:24:54.054+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:26:53.361+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T15:33:37.851+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 61"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:08:41.243+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:18:03.451+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:24:53.618+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:29:42.695+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:37:33.215+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T15:47:25.197+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 62"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:17:04.880+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:17:55.771+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:22:36.911+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:23:24.909+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:29:27.782+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T15:32:44.086+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 63"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:17:33.719+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:20:11.604+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:26:37.864+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:36:18.473+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:36:20.418+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T15:42:51.200+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 64"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:26:09.092+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:26:29.326+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:29:41.623+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:38:13.264+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:38:13.391+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T15:47:27.966+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 65"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:27:38.018+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:30:06.763+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:33:57.787+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:34:54.189+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:36:47.052+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T15:42:14.675+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 66"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:28:05.126+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:29:10.454+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:36:39.194+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:37:54.824+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:41:27.311+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T15:42:18.086+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 67"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:36:59.737+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:38:50.375+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:44:55.198+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:47:42.530+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:54:24.120+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T15:54:46.815+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 68"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:40:22.688+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:43:28.242+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:53:08.096+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:56:21.498+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:01:59.336+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T16:06:53.564+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 69"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:41:26.412+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:48:45.544+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:52:32.827+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:53:01.743+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:54:51.256+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T15:59:20.229+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 70"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:41:29.415+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:42:57.921+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:51:06.359+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:58:56.246+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:06:54.203+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T16:16:26.939+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 71"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:50:12.999+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:51:52.015+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:53:46.029+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:03:20.260+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:09:24.606+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T16:13:42.357+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 72"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T15:52:20.471+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:00:56.798+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:08:13.774+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:17:36.357+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:25:26.860+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T16:26:56.112+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 73"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:02:17.849+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:06:19.658+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:06:47.006+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:10:47.497+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:11:36.989+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T16:18:19.593+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 74"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:05:58.729+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:13:26.973+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:15:31.352+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:25:28.878+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:34:49.972+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T16:35:06.460+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 75"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:13:38.469+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:22:35.137+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:32:33.886+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:39:11.968+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:46:54.259+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T16:51:23.855+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 76"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:16:54.146+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:23:13.164+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:25:23.523+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:35:10.700+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:41:21.894+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T16:46:16.691+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 77"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:26:30.979+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:30:04.998+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:30:05.928+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:36:04.758+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:37:44.422+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T16:44:27.103+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 78"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:29:52.461+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:32:00.594+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:40:07.715+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:45:37.865+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:51:11.117+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T16:58:05.215+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 79"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:39:37.484+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:39:51.234+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:44:48.029+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:50:05.589+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:58:32.677+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T17:05:43.059+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 80"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:39:48.671+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:40:27.258+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:49:46.688+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:56:01.709+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:01:07.192+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T17:06:26.892+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 81"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:43:44.348+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:47:10.784+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:51:07.070+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:51:20.880+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:53:04.315+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T16:54:53.372+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 82"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:43:56.386+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:45:01.883+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:45:53.862+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:51:58.479+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:57:57.136+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T17:00:53.955+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 83"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:51:01.248+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:58:37.335+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:07:40.527+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:08:10.839+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:18:09.363+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T17:25:07.043+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 84"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T16:54:12.947+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:03:03.362+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:08:39.296+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:14:20.172+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:15:33.451+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T17:20:28.695+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 85"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:00:02.160+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:08:48.437+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:09:01.987+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:18:10.383+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:21:54.689+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T17:31:25.716+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 86"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:06:35.362+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:15:16.428+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:18:12.944+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:25:41.636+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:26:26.627+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T17:27:34.932+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 87"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:07:26.664+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:14:13.405+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:23:20.495+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:24:12.701+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:28:51.500+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T17:30:35.062+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 88"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:11:34.103+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:18:58.296+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:25:29.488+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:26:47.093+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:35:53.019+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T17:40:18.118+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 89"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:18:38.110+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:23:36.104+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:28:24.898+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:30:22.449+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:31:14.122+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T17:32:00.761+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 90"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:26:44.455+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:35:46.116+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:42:27.822+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:49:31.386+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:58:54.748+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T17:59:05.964+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 91"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:32:45.206+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:38:52.594+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:45:25.406+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:54:49.945+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:56:57.891+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T18:06:54.061+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 92"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:41:42.852+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:49:15.474+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:55:09.493+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:56:53.536+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:58:39.984+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T17:58:54.961+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 93"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:45:39.431+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:54:05.787+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:04:05.141+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:12:29.630+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:19:51.004+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T18:26:03.477+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 94"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:46:44.893+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:52:27.568+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:58:44.701+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:04:53.310+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:08:12.716+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T18:14:53.438+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 95"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:50:13.615+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:51:49.173+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:58:17.256+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:08:14.864+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:17:00.151+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T18:25:19.512+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 96"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:51:28.209+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:58:47.962+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:03:39.518+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:06:57.650+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:11:08.101+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T18:20:09.011+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 97"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T17:58:59.249+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:04:14.720+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:04:27.058+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:05:59.475+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:14:54.058+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T18:16:47.915+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 98"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:01:47.197+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:10:07.875+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:17:22.291+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:22:26.864+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:25:58.419+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T18:34:45.076+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 99"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:08:34.654+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:17:42.332+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:27:28.064+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:34:19.489+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:39:55.731+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T18:47:33.429+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 100"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:18:09.584+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:18:52.191+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:21:33.234+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:24:58.251+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:30:03.532+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T18:36:22.531+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 101"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:27:03.567+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:34:03.026+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:41:09.718+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:48:10.090+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:51:23.703+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T18:55:56.328+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 102"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:32:02.681+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:40:41.934+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:50:29.918+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:58:52.286+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T19:05:40.091+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T19:15:27.598+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 103"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:39:56.338+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:43:55.502+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:49:18.852+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:58:46.010+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T19:01:37.915+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T19:04:47.129+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="trace 104"/>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:44:19.260+02:00"/>
+			<string key="concept:name" value="A"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:48:10.940+02:00"/>
+			<string key="concept:name" value="B1"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T18:53:39.510+02:00"/>
+			<string key="concept:name" value="D2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T19:01:03.026+02:00"/>
+			<string key="concept:name" value="B2"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<date key="time:timestamp" value="2013-04-16T19:09:07.459+02:00"/>
+			<string key="concept:name" value="C"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+		<event>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="concept:name" value="F"/>
+			<date key="time:timestamp" value="2013-04-16T19:14:41.375+02:00"/>
+		</event>
+	</trace>
+</log>
