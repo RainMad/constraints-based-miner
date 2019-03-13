@@ -5,10 +5,15 @@ Version: 0.1.0
 Author: Who wrote it
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: More about what it does (maybe more than one line)
-    shiny
-License: What license is it under?
+License: What license, is it under?
 Encoding: UTF-8
 LazyData: true
+Imports:
+    shiny,
+    tidyverse,
+    processmonitR,
+    processmapR,
+    lattice
 Suggests: 
-    testthat
+    testthat,
 RoxygenNote: 6.1.1
