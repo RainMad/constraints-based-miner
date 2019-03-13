@@ -2,10 +2,10 @@ library(testthat)
 library(shinytest)
 library(dplyr)
 
-context("test constraint 'at most once'")
+context("test constraint 'participation'")
 #devtools::load_all("../../constraintsbasedminer", export_all = TRUE)
 
-test_that("Constratint 'at most once' works", {
+test_that("Constratint 'participation' works", {
   eventlog <- tibble(CASE_concept_name = c("Trace 1", "Trace 1", 
                                            "Trace 2", "Trace 2", "Trace 2",
                                            "Trace 3", "Trace 3"),
@@ -14,10 +14,10 @@ test_that("Constratint 'at most once' works", {
                                      "B", "C"))
   activity = "A"
   
-  result <- at_most_once(eventlog, activity)
+  result <- participation(eventlog, activity)
   
   expect_true(result %>% filter(CASE_concept_name == "Trace 1") %>% pull(resp))
-  expect_false(result %>% filter(CASE_concept_name == "Trace 2") %>% pull(resp))
-  expect_true(result %>% filter(CASE_concept_name == "Trace 3") %>% pull(resp))
+  expect_true(result %>% filter(CASE_concept_name == "Trace 2") %>% pull(resp))
+  expect_false(result %>% filter(CASE_concept_name == "Trace 3") %>% pull(resp))
 })
 

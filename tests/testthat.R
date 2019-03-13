@@ -1,5 +1,7 @@
 library(testthat)
 library(constraintsbasedminer)
-Sys.setenv("R_TESTS" = "")
+
+devtools::load_all("../constraintsbasedminer", export_all = TRUE)
+
 test_check("constraintsbasedminer")
 

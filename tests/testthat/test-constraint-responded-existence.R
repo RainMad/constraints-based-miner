@@ -3,7 +3,6 @@ library(shinytest)
 library(dplyr)
 
 context("test constraint 'responded existence'")
-source("../../inst/constraintsBasedApp/constraints.R")
 
 
 filter_result <- function(result, case){
