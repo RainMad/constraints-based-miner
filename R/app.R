@@ -2,12 +2,13 @@ library(shiny)
 library(DT)
 library(bupaR)
 library(shinycssloaders)
-library(processanimateR)
 library(processmapR)
 library(xesreadR)
 library(tidyverse)
 
 options(shiny.maxRequestSize = 1 * 1024 ^ 3) # upload limit = 1GB
+
+source("constraints.R")
 
 constraints = c(
   "Responded Existence",
@@ -45,10 +46,9 @@ ui <- fluidPage(
           font-size: 15px;
           font-style: italic;
           padding: 0 30px 30px;
-          }"
-                           )
+          }")
         )
-        ),
+    ),
     fluidRow(selectInput("x", "None", label = "Activity A")),
     uiOutput("activity2_input"),
     fluidRow(actionButton(
@@ -56,13 +56,21 @@ ui <- fluidPage(
       label = "Add Constraint",
       icon("plus", lib = "glyphicon")
     )),
-    fluidRow(DT::dataTableOutput("table"))
-        ),
+    fluidRow(DT::dataTableOutput("table")),
+    fluidRow(actionButton(
+      inputId = "export",
+      label = "Export",
+      icon("export", lib = "glyphicon")
+    ))
+    ),
   mainPanel(fluidPage(
     width = 12,
-    shinycssloaders::withSpinner(processanimaterOutput("process", height = "800px"))
+    shinycssloaders::withSpinner(uiOutput("process", height = "800px"))
   ))
+  
 )
+
+filtered_events <- NaN
 
 # Example data
 RV <-
@@ -116,7 +124,7 @@ server <- function(input, output, session) {
   })
   
   # render graph
-  output$process <- renderProcessanimater(expr = {
+  output$process <- renderUI(expr = {
     if (is.null(RV$eventlog)) {
       return()
     }
@@ -132,20 +140,16 @@ server <- function(input, output, session) {
         filter(!alltrue)
     }
     
-    filtered_events <-
+    filtered_events <<-
       RV$eventlog %>% filter(!CASE_concept_name %in% event_filter$case_id)
     
     if (count(filtered_events) == 0) {
       return()
     }
     
-    animate_process(
-      filtered_events,
-      mode = "off",
-      timeline = TRUE,
-      legend = "color",
-      initial_state = "paused"
-    )
+    tagList(process_map(
+      filtered_events
+    ))
   })
   
   # action which is fired when pressing the Ok Button for inserting constraints
@@ -172,8 +176,6 @@ server <- function(input, output, session) {
       # NotSuccession
       # NotCoExistence   
     )
-    
-    source("constraints.R")
     
     if (input$z %in% dual_constraints) {
       tbl_activity_b <- input$y
@@ -213,6 +215,37 @@ server <- function(input, output, session) {
     counter$countervalue = counter$countervalue + 1
     # add the entry to the table
     RV$constraints <<- rbind(RV$constraints, newrow)
+  })
+  
+  observeEvent(input$export, {
+    if(nrow(filtered_events) == 0){
+      showModal(modalDialog(
+        title = "Error",
+        paste0("Process model does not contain data"),
+        easyClose = TRUE,
+        footer = NULL
+      ))
+      return()
+    }
+    
+    fileName = paste0("./results/",Sys.time(),".xes", sep = "");
+    export = data.frame(filtered_events);
+    colnames(export)[which(colnames(export) == "CASE_concept_name")] <- "case_classifier"
+    exportEventLog <- bupaR::eventlog(export, 
+                    case_id = "case_classifier",
+                    activity_id = "activity_id",
+                    activity_instance_id = "activity_instance_id",
+                    timestamp = "timestamp",
+                    lifecycle_id = "lifecycle_id",
+                    resource_id = "resource_id",
+                    order = ".order")
+    write_xes(exportEventLog, fileName)
+    showModal(modalDialog(
+      title = "Export",
+      paste0("Process model has been exported to '",fileName,"'."),
+      easyClose = TRUE,
+      footer = NULL
+    ))
   })
   
   # print the table
