@@ -1,6 +1,7 @@
 {
   "input": {
     "act": 0,
+    "export": 0,
     "x": "None",
     "x-selectized": "",
     "xes_input": null,
@@ -30,16 +31,7 @@
       ]
     },
     "constraintDescription": "If Activity A occurs, then Activity B occurs after A",
-    "process": {
-      "x": null,
-      "evals": [
-
-      ],
-      "jsHooks": null,
-      "deps": [
-
-      ]
-    },
+    "process": null,
     "table": {
       "x": null,
       "evals": [
