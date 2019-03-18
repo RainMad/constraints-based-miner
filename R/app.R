@@ -10,14 +10,25 @@ options(shiny.maxRequestSize = 1 * 1024 ^ 3) # upload limit = 1GB
 
 # if A occurs the B occurs
 responded_existence <- function(eventlog, activity1, activity2) {
-  eventlog %>%
-    group_by(CASE_concept_name) %>%
-    summarize(
-      xcount = sum(activity_id == activity1),
-      ycount = sum(activity_id == activity2)
-    ) %>%
-    mutate(resp = xcount == 0 | ycount > 0) %>%
+  # eventlog %>%
+  #   group_by(CASE_concept_name) %>%
+  #   summarize(
+  #     xcount = sum(activity_id == activity1),
+  #     ycount = sum(activity_id == activity2)
+  #   ) %>%
+  #   mutate(resp = xcount == 0 | ycount > 0) %>%
+  #   select(CASE_concept_name, resp)
+  
+  res <- eventlog %>% 
+    filter_activity_presence(activity1) %>% 
+    filter_activity_presence(activity2, method="none") %>% 
+    cases
+  
+  eventlog %>% 
+    cases %>% 
+    mutate(resp = !(CASE_concept_name %in% res$CASE_concept_name)) %>% 
     select(CASE_concept_name, resp)
+  
 }
 
 # if A occurs then B follows
