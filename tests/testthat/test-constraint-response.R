@@ -5,20 +5,7 @@ library(dplyr)
 context("test constraint 'response'")
 
 test_that("Constratint 'response' works", {
-  # eventlog <- tibble(CASE_concept_name = c("Trace 1", "Trace 1", "Trace 1", 
-  #                                          "Trace 2", "Trace 2",
-  #                                          "Trace 3",
-  #                                          "Trace 4",
-  #                                          "Trace 5", "Trace 5", "Trace 5",
-  #                                          "Trace 6", "Trace 6", "Trace 6",
-  #                                          "Trace 7", "Trace 7", "Trace 7", "Trace 7", "Trace 7"),
-  #                    activity_id = c("A", "B", "C", 
-  #                                    "B", "A",
-  #                                    "C",
-  #                                    "B",
-  #                                    "A", "B", "A",
-  #                                    "B", "A", "B",
-  #                                    "A", "A", "C", "D", "B"))
+
   activity1 = "A"
   activity2 = "B"
   
@@ -27,11 +14,11 @@ test_that("Constratint 'response' works", {
   expect_true(filter_result(result, Trace1))
   expect_false(filter_result(result, Trace2))
   expect_true(filter_result(result, Trace3))
-  expect_true(filter_result(result, Trace4))
-  expect_false(filter_result(result, Trace5))
+  expect_false(filter_result(result, Trace4))
+  expect_true(filter_result(result, Trace5))
   expect_true(filter_result(result, Trace6))
-  expect_true(filter_result(result, Trace7))
-  expect_true(filter_result(result, Trace8))
+  expect_false(filter_result(result, Trace7))
+  expect_false(filter_result(result, Trace8))
   expect_true(filter_result(result, Trace9))
   expect_true(filter_result(result, Trace10))
 })

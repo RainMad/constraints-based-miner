@@ -8,26 +8,26 @@ library(tidyverse)
 
 options(shiny.maxRequestSize = 1 * 1024 ^ 3) # upload limit = 1GB
 
-# if A occurs the B occurs
+# if A occurs then B occurs
 responded_existence <- function(eventlog, activity1, activity2) {
-  # eventlog %>%
-  #   group_by(CASE_concept_name) %>%
-  #   summarize(
-  #     xcount = sum(activity_id == activity1),
-  #     ycount = sum(activity_id == activity2)
-  #   ) %>%
-  #   mutate(resp = xcount == 0 | ycount > 0) %>%
-  #   select(CASE_concept_name, resp)
-  
-  res <- eventlog %>% 
-    filter_activity_presence(activity1) %>% 
-    filter_activity_presence(activity2, method="none") %>% 
-    cases
-  
-  eventlog %>% 
-    cases %>% 
-    mutate(resp = !(CASE_concept_name %in% res$CASE_concept_name)) %>% 
+  eventlog %>%
+    group_by(CASE_concept_name) %>%
+    summarize(
+      xcount = sum(activity_id == activity1),
+      ycount = sum(activity_id == activity2)
+    ) %>%
+    mutate(resp = xcount == 0 | ycount > 0) %>%
     select(CASE_concept_name, resp)
+  
+  # res <- eventlog %>% 
+  #   filter_activity_presence(activity1) %>% 
+  #   filter_activity_presence(activity2, method="none") %>% 
+  #   cases
+  # 
+  # eventlog %>% 
+  #   cases %>% 
+  #   mutate(resp = !(CASE_concept_name %in% res$CASE_concept_name)) %>% 
+  #   select(CASE_concept_name, resp)
   
 }
 
@@ -36,7 +36,7 @@ response <- function(eventlog, activity1, activity2) {
   eventlog %>%
     group_by(CASE_concept_name) %>%
     mutate(xoccurs = activity1 %in% activity_id) %>%
-    # keep all events which contain activity1 or activity2 and all events of traces which does 
+    # keep all events which contain activity1 or activity2 and all events of traces which does
     # not contain activity 1
     filter(activity_id == activity1 |
              activity_id == activity2 | !xoccurs) %>%
@@ -44,6 +44,15 @@ response <- function(eventlog, activity1, activity2) {
               xoccurs = first(xoccurs)) %>%
     mutate(resp = last_activity == activity2 | !xoccurs)  %>%
     select(CASE_concept_name, resp)
+  
+  # res <- eventlog %>%
+  #   filter_activity_presence(activity1) %>%
+  #   filter_precedence(antecedents = activity1, consequents = activity2, precedence_type="eventually_follows")
+  # 
+  # eventlog %>%
+  #   cases %>%
+  #   mutate(resp = !(CASE_concept_name %in% res$CASE_concept_name)) %>%
+  #   select(CASE_concept_name, resp)
 }
 
 # If B occurs then A precedes
