@@ -173,6 +173,109 @@ chain_succession <- function(eventlog, activity1, activity2) {
     select(CASE_concept_name, resp)
 }
 
+not_chain_succession <- function(eventlog, activity1, activity2) {
+  eventlog %>%
+    group_by(CASE_concept_name) %>%
+    mutate(xoccurs = activity1 %in% activity_id,
+           yoccurs = activity2 %in% activity_id,
+           previous.activity = lag(activity_id),
+           next.activity = lead(activity_id),
+           chain = ((activity_id != activity1 & activity_id != activity2) |
+                      activity_id == activity2 & (is.na(previous.activity) | previous.activity != activity1) |
+                      activity_id == activity1 & (is.na(next.activity) | next.activity != activity2))) %>%
+    filter(activity_id == activity1 |
+             activity_id == activity2 | (!xoccurs & !yoccurs)) %>%
+    summarize(last_activity = last(activity_id),
+              xoccurs = first(xoccurs),
+              first_activity = first(activity_id),
+              yoccurs = last(yoccurs),
+              chain = all(chain == TRUE)) %>%
+    mutate(resp = chain | 
+             (!xoccurs & !yoccurs))  %>%
+    select(CASE_concept_name, resp)
+}
+
+alternate_response <- function(eventlog, activity1, activity2) {
+  eventlog %>%
+    group_by(CASE_concept_name) %>%
+    mutate(xoccurs = activity1 %in% activity_id) %>%
+    filter(activity_id == activity1 |
+             activity_id == activity2 | !xoccurs) %>%
+    mutate(next.activity = lead(activity_id),
+           alternate = activity_id != activity1 | (next.activity != activity1 | is.na(next.activity))) %>%
+    summarize(last_activity = last(activity_id),
+              xoccurs = first(xoccurs),
+              alternate = all(alternate == TRUE)) %>%
+    mutate(resp = (last_activity == activity2 & alternate) | !xoccurs)  %>%
+    select(CASE_concept_name, resp)
+}
+
+alternate_precedence <- function(eventlog, activity1, activity2) {
+  eventlog %>%
+    group_by(CASE_concept_name) %>%
+    mutate(yoccurs = activity2 %in% activity_id) %>%
+    filter(activity_id == activity1 |
+             activity_id == activity2 | !yoccurs) %>%
+    mutate(previous.activity = lag(activity_id),
+           alternate = activity_id != activity2 | (previous.activity != activity2 | is.na(previous.activity))) %>%
+    summarize(first_activity = first(activity_id),
+              yoccurs = first(yoccurs),
+              alternate = all(alternate == TRUE)) %>%
+    mutate(resp = (first_activity == activity1 & alternate) | !yoccurs)  %>%
+    select(CASE_concept_name, resp)
+}
+
+alternate_succession <- function(eventlog, activity1, activity2) {
+  eventlog %>%
+    group_by(CASE_concept_name) %>%
+    mutate(xoccurs = activity1 %in% activity_id,
+           yoccurs = activity2 %in% activity_id) %>%
+    filter(activity_id == activity1 |
+             activity_id == activity2 | (!xoccurs & !yoccurs)) %>%
+    mutate(previous.activity = lag(activity_id),
+           next.activity = lead(activity_id),
+           last.activity = last(activity_id),
+           first.activity = first(activity_id),
+           alternate = (activity_id != activity2 & activity_id !=activity1) | 
+            ((activity_id == activity2 & (previous.activity != activity2 | is.na(previous.activity)) |
+            (activity_id == activity1 &  (next.activity != activity1 | is.na(next.activity)))
+              ))) %>%
+    summarize(first.activity = first(activity_id),
+              xoccurs = first(xoccurs),
+              last.activity = last(activity_id),
+              yoccurs = last(yoccurs),
+              alternate = all(alternate == TRUE)) %>%
+    mutate(resp = (first.activity == activity1 & last.activity ==activity2 & alternate) | (!xoccurs&!yoccurs))  %>%
+    select(CASE_concept_name, resp)
+}
+
+not_coexistence <- function(eventlog, activity1, activity2) {
+  eventlog %>%
+    group_by(CASE_concept_name) %>%
+    summarize(
+      xcount = sum(activity_id == activity1),
+      ycount = sum(activity_id == activity2)
+    ) %>%
+    mutate(resp = ((xcount == 0 & ycount == 0) | (xcount == 0 & ycount > 0) | (xcount > 0 & ycount == 0))) %>%
+    select(CASE_concept_name, resp)
+}
+
+not_succession <- function(eventlog, activity1, activity2) {
+  eventlog %>%
+    group_by(CASE_concept_name) %>%
+    mutate(xoccurs = activity1 %in% activity_id) %>%
+    mutate(yoccurs = activity2 %in% activity_id) %>%
+    filter(activity_id == activity1 |
+             activity_id == activity2 | (!xoccurs & !yoccurs)) %>%
+    summarize(last_activity = last(activity_id),
+              xoccurs = first(xoccurs),
+              first_activity = first(activity_id),
+              yoccurs = last(yoccurs)) %>%
+    mutate(resp = !xoccurs | !yoccurs | (last_activity != activity2 & first_activity != activity1))  %>%
+    select(CASE_concept_name, resp)
+}
+
+
 
 constraints = c(
   "Responded Existence",
@@ -186,7 +289,13 @@ constraints = c(
   "At Most Once",
   "Coexistence",
   "Succession",
-  "Chain Succession"
+  "Chain Succession",
+  "Not Chain Succession",
+  "Alternate Response",
+  "Alternate Precedence",
+  "Alternate Succession",
+  "Not Coexistence",
+  "Not Succession"
 )
 
 dual_constraints = c("Responded Existence",
@@ -196,7 +305,13 @@ dual_constraints = c("Responded Existence",
                      "Chain Precedence",
                      "Coexistence",
                      "Succession",
-                     "Chain Succession")
+                     "Chain Succession",
+                     "Not Chain Succession",
+                     "Alternate Response",
+                     "Alternate Precedence",
+                     "Alternate Succession",
+                     "Not Coexistence",
+                     "Not Succession")
 
 ui <- fluidPage(
   titlePanel("Constraints Miner"),
@@ -333,18 +448,18 @@ server <- function(input, output, session) {
       "End" = end_constraint,
       "Responded Existence" = responded_existence,
       "Response" = response,
-      # Alternate response
+      "Alternate Response" = alternate_response,
       "Chain Response" = chain_response,
       "Precedence" = precedence,
-      # Alternate precedence
+      "Alternate Precedence" = alternate_precedence,
       "Chain Precedence" = chain_precedence,
       "Coexistence" = coexistence,
       "Succession" = succession,
-      # AlternateSuccession
-      "Chain Succession" = chain_succession
-      # NotChainSuccession
-      # NotSuccession
-      # NotCoExistence   
+      "Alternate Succession" = alternate_succession,
+      "Chain Succession" = chain_succession,
+      "Not Chain Succession" = not_chain_succession,
+      "Not Succession" = not_succession,
+      "Not Coexistence" =  not_coexistence
     )
     
     if (input$z %in% dual_constraints) {
@@ -451,6 +566,7 @@ server <- function(input, output, session) {
         input$z,
         "Responded Existence" = "If Activity A occurs, then Activity B occurs too",
         "Response" = "If Activity A occurs, then Activity B occurs after A",
+        "Alternate Response" = "If Activity A occurs, then Activity B occurs after A - another Activity A only occurs after Activity B",
         "Precedence" = "B occurs only if preceded by A",
         "Chain Response" = "If Activity A occurs, Activity B occurs immediately after it",
         "Chain Precedence" = "Activity B occurs only if Activity A occurs immediately before it",
@@ -460,7 +576,12 @@ server <- function(input, output, session) {
         "At Most Once" = "Activity A occurs at most once",
         "Coexistence" = "If Activity A or Activity B occurs, then the other one must also occur",
         "Succession" = "Every Activity A must be succeeded by Activity B, and every Activity B must be preceded by Activity A",
-        "Chain Succession" = "Every Activity A must be succeeded by Activity B, and every Activity B must be preceded by Activity A and Activity A and Activity B must be next to each other"
+        "Chain Succession" = "Every Activity A must be succeeded by Activity B, and every Activity B must be preceded by Activity A and Activity A and Activity B must be next to each other",
+        "Not Chain Succession" = "Activity A and Activity B can not occur after one another",
+        "Alternate Precedence" = "B occurs only if preceded by A - another Activity B only occurcs bevore A",
+        "Alternate Succession" = "Every Activity A must be succeeded by Activity B, and every Activity B must be preceded by Activity A - No repetition of either Activity A or Activity B is allowed",
+        "Not Coexistence" = "Activity A and Activity B can not occur both",
+        "Not Succession" = "Every Activity A can not be succeeded by Activity B, and every Activity B can not be preceded by Activity A"
         )
     })
   })

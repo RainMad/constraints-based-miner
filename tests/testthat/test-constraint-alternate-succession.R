@@ -2,25 +2,25 @@ library(testthat)
 library(shinytest)
 library(dplyr)
 
-context("test constraint 'response'")
+context("test constraint 'alternate succession'")
 
-test_that("Constratint 'response' works", {
-
+test_that("Constratint 'alternate succession' works", {
+  
   activity1 = "A"
   activity2 = "B"
   
-  result <- response(eventlog, activity1, activity2)
+  result <- alternate_succession(eventlog, activity1, activity2)
   
   expect_true(filter_result(result, Trace1))
   expect_false(filter_result(result, Trace2))
-  expect_true(filter_result(result, Trace3))
+  expect_false(filter_result(result, Trace3))
   expect_false(filter_result(result, Trace4))
-  expect_true(filter_result(result, Trace5))
+  expect_false(filter_result(result, Trace5))
   expect_true(filter_result(result, Trace6))
   expect_false(filter_result(result, Trace7))
   expect_false(filter_result(result, Trace8))
-  expect_true(filter_result(result, Trace9))
-  expect_true(filter_result(result, Trace10))
+  expect_false(filter_result(result, Trace9))
+  expect_false(filter_result(result, Trace10))
   expect_true(filter_result(result, Trace11))
-  expect_true(filter_result(result, Trace12))
+  expect_false(filter_result(result, Trace12))
 })

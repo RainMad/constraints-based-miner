@@ -22,4 +22,5 @@ test_that("Constratint 'chain succession' works", {
   expect_false(filter_result(result, Trace9))
   expect_false(filter_result(result, Trace10))
   expect_true(filter_result(result, Trace11))
+  expect_false(filter_result(result, Trace12))
 })
