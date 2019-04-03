@@ -31,7 +31,16 @@
       ]
     },
     "constraintDescription": "If Activity A occurs, then Activity B occurs after A",
-    "process": null,
+    "process": {
+      "x": null,
+      "evals": [
+
+      ],
+      "jsHooks": null,
+      "deps": [
+
+      ]
+    },
     "table": {
       "x": null,
       "evals": [
