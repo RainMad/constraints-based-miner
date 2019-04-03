@@ -3,6 +3,7 @@ library(DT)
 library(bupaR)
 library(shinycssloaders)
 library(processmapR)
+library(processanimateR)
 library(xesreadR)
 library(tidyverse)
 
@@ -314,7 +315,7 @@ dual_constraints = c("Responded Existence",
                      "Not Succession")
 
 ui <- fluidPage(
-  titlePanel("Constraints Miner"),
+  titlePanel("Constraints based Miner"),
   sidebarPanel(
     fluidRow(fileInput(
       "xes_input", "Choose XES File",
@@ -350,7 +351,8 @@ ui <- fluidPage(
     ),
   mainPanel(fluidPage(
     width = 12,
-    shinycssloaders::withSpinner(uiOutput("process", height = "800px"))
+    #shinycssloaders::withSpinner(uiOutput("process", height = "800px"))
+    shinycssloaders::withSpinner(processanimaterOutput("process", height = "800px"))
   ))
   
 )
@@ -409,7 +411,7 @@ server <- function(input, output, session) {
   })
   
   # render graph
-  output$process <- renderUI(expr = {
+  output$process <- renderProcessanimater(expr = {
     if (is.null(RV$eventlog)) {
       return()
     }
@@ -432,9 +434,17 @@ server <- function(input, output, session) {
       return()
     }
     
-    tagList(process_map(
-      filtered_events
-    ))
+    animate_process(
+      filtered_events,
+      mode = "off",
+      timeline = TRUE,
+      legend = "color",
+      initial_state = "paused"
+    )
+    
+    #tagList(process_map(
+    #  filtered_events
+    #))
   })
   
   # action which is fired when pressing the Ok Button for inserting constraints
@@ -524,7 +534,7 @@ server <- function(input, output, session) {
                     lifecycle_id = "lifecycle_id",
                     resource_id = "resource_id",
                     order = ".order")
-    write_xes(exportEventLog, fileName)
+    tryCatch(write_xes(exportEventLog, fileName))
     showModal(modalDialog(
       title = "Export",
       paste0("Process model has been exported to '",fileName,"'."),
