@@ -12,7 +12,6 @@ Imports:
     shiny,
     tidyverse,
     processmonitR,
-    processmapR,
     lattice
 Suggests: 
     testthat,
