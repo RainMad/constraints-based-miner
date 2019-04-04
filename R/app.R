@@ -522,7 +522,7 @@ server <- function(input, output, session) {
       return()
     }
     
-    fileName = paste0("./results/",Sys.time(),".xes", sep = "");
+    #fileName = paste0("./results/",Sys.time(),".xes", sep = "");
     export = data.frame(filtered_events);
     colnames(export)[which(colnames(export) == "CASE_concept_name")] <- "case_classifier"
     exportEventLog <- bupaR::eventlog(export, 
@@ -533,10 +533,10 @@ server <- function(input, output, session) {
                     lifecycle_id = "lifecycle_id",
                     resource_id = "resource_id",
                     order = ".order")
-    tryCatch(write_xes(exportEventLog, fileName))
+    tryCatch(write_xes(exportEventLog, xesfile = file.choose(new=TRUE)))
     showModal(modalDialog(
       title = "Export",
-      paste0("Process model has been exported to '",fileName,"'."),
+      paste0("Process model has been successfully exported"),
       easyClose = TRUE,
       footer = NULL
     ))
