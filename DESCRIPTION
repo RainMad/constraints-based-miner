@@ -1,17 +1,25 @@
 Package: constraintsbasedminer
 Type: Package
-Title: What the Package Does (Title Case)
+Title: An implementation of a constraints-based miner
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
+Authors@R: c(
+    person("Rainer", "Madlmayr", email = "rainer.madlmayr@students.fh-hagenberg.at", role = c("aut", "cre")),
+    person("Peter", "Schmidbauer", email = "peter.schmidbauer@students.fh-hagenberg.at", role = c("aut", "cre")),
+    person("David", "Muhr", email = "david.muhr@students.fh-hagenberg.at", role = c("aut", "cre")))
+Maintainer: Rainer Madlmayr <rainer.madlmayr@students.fh-hagenberg.at>
+Description: This implementation is about a dashboard for testing different declarative constraints on a 
+    process model which is uploaded using a .xes file. The different constraints are applied to the process model
+    and the result how the process model changes is shown.
 License: What license, is it under?
 Encoding: UTF-8
 LazyData: true
 Imports:
     shiny,
+    DT,
+    bupaR,
+    shinycssloaders,
+    processanimateR,
+    xesreadR,
     tidyverse,
-    lattice
 Suggests: 
     testthat,
-RoxygenNote: 6.1.1
