@@ -4,8 +4,8 @@ Title: An implementation of a constraints-based miner
 Version: 0.1.0
 Authors@R: c(
     person("Rainer", "Madlmayr", email = "rainer.madlmayr@students.fh-hagenberg.at", role = c("aut", "cre")),
-    person("Peter", "Schmidbauer", email = "peter.schmidbauer@students.fh-hagenberg.at", role = c("aut", "cre")),
-    person("David", "Muhr", email = "david.muhr@students.fh-hagenberg.at", role = c("aut", "cre")))
+    person("Peter", "Schmidbauer", email = "peter.schmidbauer@students.fh-hagenberg.at", role = c("aut")),
+    person("David", "Muhr", email = "david.muhr@students.fh-hagenberg.at", role = c("aut")))
 Maintainer: Rainer Madlmayr <rainer.madlmayr@students.fh-hagenberg.at>
 Description: This implementation is about a dashboard for testing different declarative constraints on a 
     process model which is uploaded using a .xes file. The different constraints are applied to the process model
