@@ -1,6 +1,5 @@
 library(shiny)
 library(DT)
-library(bupaR)
 library(shinycssloaders)
 library(processanimateR)
 library(xesreadR)
@@ -13,7 +12,7 @@ options(shiny.maxRequestSize = 200 * 1024 ^ 2) # upload limit = 200MB (GB 1 * 10
 # <Trace2> <Boolean>
 # <Trace3> <Boolean>
 #...
-# <TraceN> <Boolean>
+# <TraceN> <Boolean>?
 # The boolean indicates if the condition of the constraint is satisfied or not
 # For example the constraint 'responded existence' returns TRUE for each 
 # trace which contains the acitvities A and B
@@ -314,7 +313,7 @@ dual_constraints = c("Responded Existence",
                      "Not Succession")
 
 ui <- fluidPage(
-  titlePanel("Constraints based Miner"),
+  titlePanel("Constraints Based Miner"),
   sidebarPanel(
     fluidRow(fileInput(
       "xes_input", "Choose XES File",
@@ -351,7 +350,7 @@ ui <- fluidPage(
   mainPanel(fluidPage(
     width = 12,
     #shinycssloaders::withSpinner(uiOutput("process", height = "800px"))
-    shinycssloaders::withSpinner(processanimaterOutput("process", height = "800px"))
+    withSpinner(processanimaterOutput("process", height = "800px"))
   ))
   
 )
@@ -361,7 +360,7 @@ server <- function(input, output, session) {
   # counter value used as id for the releationships
   counter <- reactiveValues(countervalue = 0)
 
-  filtered_events <- NaN
+  filtered_events <- list()
   
   # Example data
   reactiveDataValues <-
@@ -378,6 +377,7 @@ server <- function(input, output, session) {
       filters = NULL
     )
   
+  
   # remove UI for second activity if single constraint is selected
   output$activity2_input <- renderUI({
     if (input$z %in% dual_constraints) {
@@ -391,17 +391,15 @@ server <- function(input, output, session) {
     }
   })
 
-  
   # read file only if fileinput changes
   observeEvent(input$xes_input, {
     reactiveDataValues$eventlog <- read_xes(input$xes_input$datapath)
     reactiveDataValues$filters <-
       data.frame(row.names = unique(reactiveDataValues$eventlog$CASE_concept_name))
-    reactiveDataValues$constraints <- NULL
-    
+
     # set content of activity dropdown boxes
     possible_activities <- unique(reactiveDataValues$eventlog$activity_id)
-    
+
     updateSelectInput(session = session,
                       inputId = "x",
                       choices = possible_activities)
@@ -428,7 +426,7 @@ server <- function(input, output, session) {
         filter(!alltrue)
     }
     
-    filtered_events <-
+    filtered_events <<-
       reactiveDataValues$eventlog %>% filter(!CASE_concept_name %in% event_filter$case_id)
     
     if (count(filtered_events) == 0) {
@@ -532,7 +530,7 @@ server <- function(input, output, session) {
   })
   
   observeEvent(input$export, {
-    if(nrow(filtered_events) == 0 || is.nan(filtered_events)){
+    if(nrow(filtered_events) == 0){
       showModal(modalDialog(
         title = "Error",
         paste0("Process model does not contain data"),
@@ -553,13 +551,23 @@ server <- function(input, output, session) {
                     lifecycle_id = "lifecycle_id",
                     resource_id = "resource_id",
                     order = ".order")
-    tryCatch(write_xes(exportEventLog, xesfile = file.choose(new=TRUE)))
-    showModal(modalDialog(
-      title = "Export",
-      paste0("Process model has been successfully exported"),
-      easyClose = TRUE,
-      footer = NULL
-    ))
+    tryCatch({ write_xes(exportEventLog, xesfile = file.choose(new=TRUE))
+      showModal(modalDialog(
+        title = "Export",
+        paste0("Process model has been successfully exported"),
+        easyClose = TRUE,
+        footer = NULL
+      ))
+      },
+      error=function(err) {
+        showModal(modalDialog(
+          title = "Export",
+          paste0("The file selection has been canceled."),
+          easyClose = TRUE,
+          footer = NULL
+        ))
+      })
+    
   })
   
   # print the table
