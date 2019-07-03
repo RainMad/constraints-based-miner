@@ -21,4 +21,5 @@ test_that("Constratint 'precedence' works", {
   expect_false(filter_result(result, Trace8))
   expect_false(filter_result(result, Trace9))
   expect_true(filter_result(result, Trace10))
+  expect_true(filter_result(result, Trace13))
 })

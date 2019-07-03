@@ -1,6 +1,6 @@
 Package: constraintsbasedminer
 Type: Package
-Title: An implementation of a constraints-based miner
+Title: An implementation of a Constraints Based Miner
 Version: 0.1.0
 Authors@R: c(
     person("Rainer", "Madlmayr", email = "rainer.madlmayr@students.fh-hagenberg.at", role = c("aut", "cre")),
@@ -16,10 +16,10 @@ LazyData: true
 Imports:
     shiny,
     DT,
-    bupaR,
     shinycssloaders,
     processanimateR,
     xesreadR,
     tidyverse,
 Suggests: 
     testthat,
+RoxygenNote: 6.1.1

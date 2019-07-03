@@ -454,9 +454,13 @@ server <- function(input, output, session) {
     
     constraints <- reactiveDataValues$constraints
     # check if the constraint with the same activities already exists 
-    if(input$z %in% constraints$Constraint && 
-       input$x %in% constraints$ActivityA &&
-       input$y %in% constraints$ActivityB)
+    # if(input$z %in% constraints$Constraint && 
+    #    input$x %in% constraints$ActivityA &&
+    #    input$y %in% constraints$ActivityB)
+      if(constraints %>% filter(Constraint == input$z, 
+                                ActivityA == input$x, 
+                                if (input$z %in% dual_constraints) 
+                                  ActivityB == input$y else TRUE) %>% count() > 0)
     {
       showModal(modalDialog(
         title = "Constraint already added",
@@ -508,12 +512,12 @@ server <- function(input, output, session) {
     # create a new entry
     newrow = data.frame(
       Id = counter$countervalue,
+      Constraint = input$z,
       ActivityA = input$x,
       ActivityB = tbl_activity_b,
-      Constraint = input$z,
-      Filtered = paste0(round((
+      Excluded = paste0(round((
         1 - sum(constraint_matches[[1]]) / length(constraint_matches[[1]])
-      ) * 100, 1), "%"),
+      ) * 100, 2), "%"),
       Delete = paste(
         "<button id='button_",
         counter$countervalue,
@@ -575,13 +579,12 @@ server <- function(input, output, session) {
     reactiveDataValues$constraints,
     escape = FALSE,
     rownames = FALSE,
+    colnames = c('Id', 'Constraint', 'Activity A', 'Activity B', 'Excluded [%]', 'Delete'),
     options = list(
       pageLength = 5,
       dom = 'tip',
       autoWidth = TRUE,
-      columnDefs = list(list(
-        className = 'dt-center', targets = "_all"
-      ))
+      columnDefs = list(list(className = 'dt-center', targets = "_all"))
     )
   )
   
@@ -615,7 +618,7 @@ server <- function(input, output, session) {
         "Succession" = "Every Activity A must be succeeded by Activity B, and every Activity B must be preceded by Activity A",
         "Chain Succession" = "Every Activity A must be succeeded by Activity B, and every Activity B must be preceded by Activity A and Activity A and Activity B must be next to each other",
         "Not Chain Succession" = "Activity A and Activity B can not occur after one another",
-        "Alternate Precedence" = "B occurs only if preceded by A - another Activity B only occurcs bevore A",
+        "Alternate Precedence" = "B occurs only if preceded by A - another Activity B only occurcs before A",
         "Alternate Succession" = "Every Activity A must be succeeded by Activity B, and every Activity B must be preceded by Activity A - No repetition of either Activity A or Activity B is allowed",
         "Not Coexistence" = "Activity A and Activity B can not occur both",
         "Not Succession" = "Every Activity A can not be succeeded by Activity B, and every Activity B can not be preceded by Activity A"
