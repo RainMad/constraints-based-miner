@@ -19,7 +19,7 @@ D = "D"
 
 
 eventlog <- bupaR::simple_eventlog(
-  tibble::tibble(
+  eventlog = data.frame(
     CASE_concept_name = c(Trace1, Trace1, Trace1, 
                           Trace2, Trace2, Trace2,
                           Trace3, Trace3,

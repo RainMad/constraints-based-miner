@@ -12,7 +12,7 @@ options(shiny.maxRequestSize = 200 * 1024 ^ 2) # upload limit = 200MB (GB 1 * 10
 # <Trace2> <Boolean>
 # <Trace3> <Boolean>
 #...
-# <TraceN> <Boolean>?
+# <TraceN> <Boolean>
 # The boolean indicates if the condition of the constraint is satisfied or not
 # For example the constraint 'responded existence' returns TRUE for each 
 # trace which contains the acitvities A and B
@@ -358,8 +358,7 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   # counter value used as id for the releationships
-  counter <- reactiveValues(countervalue = 0)
-
+  countervalue <- reactiveVal(0)
   filtered_events <- list()
   
   # Example data
@@ -386,7 +385,7 @@ server <- function(input, output, session) {
       } else {
         possible_activities <- unique(reactiveDataValues$eventlog$activity_id)
       }
-      
+
       fluidRow(selectInput("y", possible_activities, label = "Activity B"))
     }
   })
@@ -410,7 +409,7 @@ server <- function(input, output, session) {
   
   # render graph
   output$process <- renderProcessanimater(expr = {
-
+  
     if (is.null(reactiveDataValues$eventlog)) {
       return()
     }
@@ -425,14 +424,14 @@ server <- function(input, output, session) {
         rownames_to_column("case_id") %>%
         filter(!alltrue)
     }
-    
+
     filtered_events <<-
       reactiveDataValues$eventlog %>% filter(!CASE_concept_name %in% event_filter$case_id)
-    
+
     if (count(filtered_events) == 0) {
       return()
     }
-    
+
     animate_process(
       filtered_events,
       mode = "off",
@@ -440,7 +439,7 @@ server <- function(input, output, session) {
       legend = "color",
       initial_state = "paused"
     )
-    
+
     #tagList(process_map(
     #  filtered_events
     #))
@@ -504,14 +503,14 @@ server <- function(input, output, session) {
     # merge new constraints with old constraints
     constraint_matches <- constraint_matches %>%
       column_to_rownames("CASE_concept_name")
-    colnames(constraint_matches) <- toString(counter$countervalue)
+    colnames(constraint_matches) <- toString(countervalue())
     
     reactiveDataValues$filters = merge(reactiveDataValues$filters, constraint_matches, by = "row.names") %>%
        column_to_rownames(var = "Row.names")
     
     # create a new entry
     newrow = data.frame(
-      Id = counter$countervalue,
+      Id = countervalue(),
       Constraint = input$z,
       ActivityA = input$x,
       ActivityB = tbl_activity_b,
@@ -520,7 +519,7 @@ server <- function(input, output, session) {
       ) * 100, 2), "%"),
       Delete = paste(
         "<button id='button_",
-        counter$countervalue,
+        countervalue(),
         "' type='button' class='btn btn-default action-button' onclick='Shiny.onInputChange(&quot;select_button&quot;,  this.id)'>Delete</button>",
         sep = ""
       ),
@@ -528,7 +527,7 @@ server <- function(input, output, session) {
     )
     
     # increase the id
-    counter$countervalue = counter$countervalue + 1
+    countervalue(countervalue() + 1)
     # add the entry to the table
     reactiveDataValues$constraints <- rbind(reactiveDataValues$constraints, newrow)
   })
@@ -544,7 +543,6 @@ server <- function(input, output, session) {
       return()
     }
     
-    #fileName = paste0("./results/",Sys.time(),".xes", sep = "");
     export = data.frame(filtered_events);
     colnames(export)[which(colnames(export) == "CASE_concept_name")] <- "case_classifier"
     exportEventLog <- bupaR::eventlog(export, 
